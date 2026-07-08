@@ -32,7 +32,25 @@
               :title="lang.label"
               @click="setLanguage(lang.code)"
             >
-              <span class="lang-switcher__flag" aria-hidden="true">{{ lang.flag }}</span>
+              <span class="lang-switcher__flag" aria-hidden="true">
+                <!-- España -->
+                <svg v-if="lang.code === 'es'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+                  <rect width="30" height="20" fill="#c60b1e"/>
+                  <rect y="5" width="30" height="10" fill="#ffc400"/>
+                </svg>
+                <!-- Inglaterra -->
+                <svg v-else-if="lang.code === 'en'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+                  <rect width="30" height="20" fill="#fff"/>
+                  <rect x="13" width="4" height="20" fill="#ce1124"/>
+                  <rect y="8" width="30" height="4" fill="#ce1124"/>
+                </svg>
+                <!-- Francia -->
+                <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+                  <rect width="10" height="20" fill="#002395"/>
+                  <rect x="10" width="10" height="20" fill="#fff"/>
+                  <rect x="20" width="10" height="20" fill="#ed2939"/>
+                </svg>
+              </span>
             </button>
           </div>
         </div>
@@ -57,9 +75,9 @@ const navLinks = [
 ]
 
 const languages = [
-  { code: 'es', flag: '🇪🇸', label: 'Español' },
-  { code: 'en', flag: '🇬🇧', label: 'English' },
-  { code: 'fr', flag: '🇫🇷', label: 'Français' },
+  { code: 'es', label: 'Español' },
+  { code: 'en', label: 'English' },
+  { code: 'fr', label: 'Français' },
 ]
 
 function setLanguage(code) {
@@ -169,8 +187,19 @@ function setLanguage(code) {
 }
 
 .lang-switcher__flag {
-  font-size: 1.15rem;
-  line-height: 1;
+  display: inline-flex;
+  width: 1.55rem;
+  height: 1.05rem;
+  border-radius: 0.15rem;
+  overflow: hidden;
+  line-height: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.lang-switcher__flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 992px) {

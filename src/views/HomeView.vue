@@ -25,7 +25,7 @@
         </h1>
         <p class="hero-subtitulo mb-0">
           Composición, arreglos y dirección orquestal.
-          <span class="hero-cita">«Llevando la música del papel al podio».</span>
+          <span class="hero-cita">«Llevando la música de la partitura al escenario».</span>
         </p>
       </div>
     </div>
@@ -176,8 +176,8 @@ import FooterComponent from '../components/FooterComponent.vue'
 import CardComponent from '../components/CardComponent.vue'
 import catalogoPacks from '../data/catalogoPack.json'
 
-/** Foto del director — reemplazar en `public/img/director.jpg` */
-const heroFotoSrc = '/img/director.jpg'
+/** Foto del director en `public/img/image_maestro.jpg` */
+const heroFotoSrc = '/img/image_maestro.jpg'
 
 const servicios = [
   {
@@ -435,7 +435,7 @@ onUnmounted(() => {
 
 /* Hero */
 .hero-foto-shell {
-  --foto-ancho: min(100%, 14rem);
+  --foto-ancho: min(100%, 22rem);
   flex: 0 0 auto;
   width: var(--foto-ancho);
   margin-inline: auto;
@@ -454,7 +454,6 @@ onUnmounted(() => {
 
 .hero-foto {
   width: 100%;
-  aspect-ratio: 3 / 4;
   border-radius: 1rem;
   overflow: hidden;
   background: linear-gradient(145deg, #1a1a1a 0%, #2a2024 100%);
@@ -465,7 +464,7 @@ onUnmounted(() => {
 
 @media (min-width: 768px) {
   .hero-foto-shell {
-    --foto-ancho: 13rem;
+    --foto-ancho: 26rem;
     margin-inline: 0;
   }
 }
@@ -473,9 +472,9 @@ onUnmounted(() => {
 .hero-foto__img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
