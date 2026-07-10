@@ -16,7 +16,7 @@
     }
 
     #app {
-      font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-family: var(--font-body);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-align: center;

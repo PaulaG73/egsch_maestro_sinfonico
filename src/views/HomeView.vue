@@ -31,12 +31,12 @@
     </div>
   </section>
 
-  <!-- Reproductor de video -->
-  <section id="video" class="home-section home-section--slate py-4 py-md-5">
+  <!-- Reproductor de video (franja provisional) -->
+  <section id="video" class="home-section home-section--slate py-2">
     <div class="container">
       <div class="video-player-shell">
         <div class="video-player-placeholder" role="region" aria-label="Reproductor de video">
-          <svg class="video-player-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+          <svg class="video-player-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
             <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
           </svg>
@@ -140,7 +140,6 @@
               </svg>
             </div>
             <h3 class="servicio-card__titulo">{{ servicio.titulo }}</h3>
-            <p class="servicio-card__subtitulo">{{ servicio.subtitulo }}</p>
             <p class="servicio-card__descripcion mb-0">{{ servicio.descripcion }}</p>
           </article>
         </div>
@@ -182,29 +181,25 @@ const heroFotoSrc = '/img/image_maestro.jpg'
 const servicios = [
   {
     id: 1,
-    titulo: 'Composición',
-    subtitulo: 'Obras originales',
+    titulo: 'Composiciones',
     descripcion: 'Creación de piezas sinfónicas, de cámara y arreglos a medida para distintos formatos orquestales.',
     icon: 'composicion',
   },
   {
     id: 2,
-    titulo: 'Arreglos orquestales',
-    subtitulo: 'Del piano al podio',
+    titulo: 'Orquestaciones',
     descripcion: 'Adaptación y orquestación de obras existentes, respetando la intención musical y ampliando su paleta sonora.',
     icon: 'arreglos',
   },
   {
     id: 3,
-    titulo: 'Dirección orquestal',
-    subtitulo: 'Conciertos y grabaciones',
+    titulo: 'Arreglos Corales',
     descripcion: 'Preparación de ensayos, dirección en escenario y acompañamiento en procesos de grabación discográfica.',
     icon: 'direccion',
   },
   {
     id: 4,
-    titulo: 'Consultoría musical',
-    subtitulo: 'Proyectos a medida',
+    titulo: 'Transcripción de partituras',
     descripcion: 'Asesoría para instituciones, festivales y agrupaciones en programación, montaje y producción musical.',
     icon: 'consultoria',
   },
@@ -401,10 +396,10 @@ onUnmounted(() => {
 }
 
 .section-title {
-  font-family: 'Nunito', system-ui, sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.3rem, 4vw, 1.9rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   color: var(--vin-texto-claro);
   position: relative;
   display: inline-block;
@@ -429,6 +424,7 @@ onUnmounted(() => {
 }
 
 .section-placeholder {
+  font-family: var(--font-body);
   color: var(--vin-texto-muted);
   font-size: clamp(0.9rem, 2.2vw, 1rem);
 }
@@ -499,15 +495,16 @@ onUnmounted(() => {
 }
 
 .hero-titulo {
-  font-family: 'Nunito', system-ui, sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.35rem, 4.5vw, 2rem);
-  font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
   color: var(--vin-texto-claro);
 }
 
 .hero-subtitulo {
+  font-family: var(--font-body);
   font-size: clamp(0.95rem, 2.4vw, 1.1rem);
   line-height: 1.65;
   color: var(--vin-texto-muted);
@@ -523,29 +520,30 @@ onUnmounted(() => {
 
 /* Video */
 .video-player-shell {
-  max-width: 960px;
+  max-width: 100%;
   margin-inline: auto;
 }
 
 .video-player-placeholder {
-  aspect-ratio: 16 / 9;
-  border-radius: 0.75rem;
+  height: clamp(3.25rem, 8vw, 4.25rem);
+  border-radius: 0.45rem;
   background: linear-gradient(160deg, #1c1418 0%, #0f0f0f 100%);
   border: 1px solid var(--vin-borde-sutil);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.55rem;
   color: var(--vin-texto-muted);
 }
 
 .video-player-icon {
   opacity: 0.45;
+  flex-shrink: 0;
 }
 
 .video-player-label {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
 }
 
@@ -577,22 +575,22 @@ onUnmounted(() => {
 }
 
 .servicio-card__titulo {
+  font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--vin-texto-claro);
-  margin-bottom: 0.25rem;
-}
-
-.servicio-card__subtitulo {
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--vin-acento-sobre-negro);
+  line-height: 1.3;
+  /* Reserva 2 líneas de título para alinear descripciones */
+  min-height: calc(1.05rem * 1.3 * 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vin-texto-claro);
   margin-bottom: 0.65rem;
 }
 
 .servicio-card__descripcion {
+  font-family: var(--font-body);
   font-size: 0.88rem;
   line-height: 1.55;
   color: var(--vin-texto-muted);

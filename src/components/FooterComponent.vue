@@ -138,7 +138,7 @@
     padding: 0.45rem 0.85rem;
     background: #fff;
     color: var(--vin-profundo, #3a0f18);
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: var(--font-body);
     font-size: 0.8125rem;
     font-weight: 700;
     line-height: 1.25;

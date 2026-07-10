@@ -23,6 +23,10 @@
   --vin-acento-sobre-negro: #e4b3bc;
   --vin-borde-sutil: rgba(255, 255, 255, 0.1);
 
+  /* Tipografía: serif elegante (títulos) + sans geométrica (lectura) */
+  --font-display: 'Cinzel', 'Times New Roman', Times, serif;
+  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
   /* Verde marca WhatsApp (solo botón WA) */
   --wa-green: #25d366;
   --wa-green-hover: #20bd5a;
@@ -72,7 +76,7 @@
   justify-content: center;
   gap: 0.4rem;
   padding: 0.48rem 1rem 0.48rem 0.85rem;
-  font-family: 'Nunito', system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.03em;

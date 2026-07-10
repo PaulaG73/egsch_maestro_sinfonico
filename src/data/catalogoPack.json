@@ -1,23 +1,9 @@
 [
     {
-      "id": "1",
-      "title": "N°1 Blancos/Alchemysta Wines",
-      "valle": "Valle de Casablanca",
-      "agotado": true,
-      "image": "/img/Blancos.jpg",
-      "price": "$15.000",
-      "bloques": [
-        { "tipoCopa": "blanco", "cantidadBotellas": 1, "nombreVino": "Angelina White Angel, Sauvignon Blanc" },
-        { "tipoCopa": "blanco", "cantidadBotellas": 1, "nombreVino": "Angelina White Angel, Chardonnay" }
-      
-      ]
-    },
-    {
       "id": "2",
       "title": "N°2 Espumantes/MujerAndina Wines",
       "valle": "Valles de Bío Bío, Itata y Cachapoal",
-      "agotado": true,
-      "image": "/img/Espumantes.jpg",
+      "image": "/img/musica-violin.jpg",
       "price": "$25.000",
       "bloques": [
         { "tipoCopa": "espumante", "cantidadBotellas": 1, "nombreVino": "Ai! Brut, Chardonnay/Pinot Noir" },
@@ -28,7 +14,7 @@
       "id": "3",
       "title": "N°3 Rosados/Viñateros de Raíz y MujerAndina Wines",
       "valle": "Valle del Maipo",
-      "image": "/img/Rosados.jpg",
+      "image": "/img/musica-partitura.jpg",
       "price": "$25.000",
       "bloques": [
         { "tipoCopa": "rosado", "cantidadBotellas": 1, "nombreVino": "Umbral, Garnacha/Syrah/Monastrell" },
@@ -37,22 +23,10 @@
       ]
     },
     {
-      "id": "4",
-      "title": "N°4 Ensamblajes Tintos/OWM Wines",
-      "valle": "Valle de Colchagua",
-      "image": "/img/Tintos.jpg",
-      "price": "$25.000",
-      "bloques": [
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "OWM Hand Made, Ensamblaje 2018" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "OWM Hand Made Black, Ensamblaje 2021" }
-
-      ]
-    },
-    {
       "id": "5",
       "title": "N°5 Tintos/Viña Algorta",
       "valle": "Valle de Rapel",
-      "image": "/img/Tintos_SP.jpg",
+      "image": "/img/musica-guitarra.jpg",
       "price": "$32.000",
       "bloques": [
        
@@ -64,11 +38,8 @@
       "id": "6",
       "title": "N°6 Tripack Rock Stars",
       "valle": "Valles Rapel, Cachapoal y Colchagua",
-      "agotado": true,
-      "image": "/img/tripack_Rock_Stars.jpg",
+      "image": "/img/musica-trompeta.jpg",
       "price": "$23.000",
-      "ofertaEtiqueta": "Cyber oferta",
-      "priceOferta": "$21.500",
       "bloques": [
        
         { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Parróne Cabernet Sauvignon/Syrah, Alchemysta Wines" },
@@ -80,7 +51,7 @@
       "id": "7",
       "title": "N°7 Tripack OMG!/OWM Wines",
       "valle": "Valle de Colchagua",
-      "image": "/img/OMG!.jpg",
+      "image": "/img/musica-teclado.jpg",
       "price": "$35.000",
       "bloques": [
         { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "OWM Hand Made, Ensamblaje 2018" },
@@ -89,22 +60,10 @@
       ]
     },
     {
-      "id": "8",
-      "title": "N°8 Tripack Sensaciones",
-      "valle": "Valles de Cachapoal e Itata",
-      "image": "/img/tripck_sensaciones.jpg",
-      "price": "$39.000",
-      "bloques": [
-        { "tipoCopa": "espumante", "cantidadBotellas": 1, "nombreVino": "Livianita de Sangre Cocktail Brut Zero, Cinsault/Chardonnay, Mujer Andina Wines" },
-        { "tipoCopa": "blanco", "cantidadBotellas": 1, "nombreVino": "Taii Velo, 100% Torontel, Valle de Itata, Peroli Family & Friends" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Mala Testa, Garnache/Syrah/Mourvedre, Valle Cachapoal Andes, by Algorta" }
-      ]
-    },
-    {
       "id": "9",
       "title": "N°9 Tripack MaipOrigen",
       "valle": "Valle del Maipo",
-      "image": "/img/tripack_Maiporigen.jpg",
+      "image": "/img/musica-camara.jpg",
       "price": "$43.000",
       "bloques": [
         { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Jardinero Mezcla Tinta, Valle del Maipo, Viñateros de Raíz" },
@@ -113,24 +72,10 @@
       ]
     },
     {
-      "id": "10",
-      "title": "N°10 Caja Rock Stars",
-      "valle": "Valles Rapel, Cachapoal y Colchagua",
-      "agotado": true,
-      "image": "/img/pack-rockstars.jpg",
-      "price": "$45.000",
-      "bloques": [
-       
-        { "tipoCopa": "tinto", "cantidadBotellas": 2, "nombreVino": "Parróne Cabernet Sauvignon/Syrah, Alchemysta Wines" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 2, "nombreVino": "Pillo de Panamá Cabernet Sauvignon/Syrah/Petit Verdot, OWM Wines" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 2, "nombreVino": "Grand Reserve Cabernet Sauvignon, Viña Algorta" }
-      ]
-    },
-    {
       "id": "11",
       "title": "N°11 Caja Algorta Grand Reserve",
       "valle": "Valle de Rapel",
-      "image": "/img/GR_Algorta.jpg",
+      "image": "/img/musica-batuta.jpg",
       "price": "$40.000",
       "bloques": [
         { "tipoCopa": "tinto", "cantidadBotellas": 3, "nombreVino": "Grand Reserve, Carménère" },
@@ -138,24 +83,10 @@
       ]
     },
     {
-      "id": "12",
-      "title": "N°12 Caja Colección Algorta",
-      "valle": "Valle de Rapel",
-      "image": "/img/coleccion-algorta.jpg",
-      "price": "$50.000",
-      "bloques": [
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Grand Reserve, Carménère" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Grand Reserve, Cabernet Sauvignon" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 2, "nombreVino": "Family Reserve, Cabernet Sauvignon" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Winemaker Series, Wild Carménère" },
-        { "tipoCopa": "tinto", "cantidadBotellas": 1, "nombreVino": "Winemaker Series, The Blend" }
-      ]
-    },
-    {
       "id": "13",
       "title": "N°13 Caja Innovación",
       "valle": "Valles del Maipo, Cachapoal e Itata",
-      "image": "/img/innovacion.jpg",
+      "image": "/img/musica-noten.jpg",
       "price": "$75.000",
       "bloques": [
         { "tipoCopa": "espumante", "cantidadBotellas": 2, "nombreVino": "Livianita de Sangre Cocktail Brut Zero, Cinsault/Chardonnay, Mujer Andina Wines" },

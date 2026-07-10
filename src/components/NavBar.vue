@@ -92,7 +92,7 @@ function setLanguage(code) {
 }
 
 .nav-vino .nav-link {
-  font-family: 'Nunito', system-ui, sans-serif;
+  font-family: var(--font-body);
   font-weight: 700;
   color: rgba(255, 255, 255, 0.92);
 }

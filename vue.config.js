@@ -6,7 +6,7 @@ function publicSiteOrigin() {
 }
 
 const OG_DESCRIPTION =
-  'Es tiempo de APRENDER, es tiempo de COMPARTIR, es tiempo de DISFRUTAR. Revisa el catálogo aquí.'
+  'Composición, arreglos y dirección orquestal. Llevando la música del papel al podio.'
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -14,7 +14,7 @@ module.exports = defineConfig({
   pages: {
     index: {
       entry: 'src/main.js',
-      title: 'Catálogo Fin de Semana · Vinóloga',
+      title: 'Eduardo Gajardo Schmidlin · Maestro Sinfónico',
     },
   },
   devServer: {
@@ -31,9 +31,9 @@ module.exports = defineConfig({
       const origin = publicSiteOrigin()
       const opts = args[0]
       opts.ogPageUrl = origin ? `${origin}/` : ''
-      opts.ogImageUrl = origin ? `${origin}/img/douro.jpg` : ''
-      opts.ogImageWidth = 729
-      opts.ogImageHeight = 1200
+      opts.ogImageUrl = origin ? `${origin}/img/image_maestro.jpg` : ''
+      opts.ogImageWidth = 1200
+      opts.ogImageHeight = 630
       opts.ogDescription = OG_DESCRIPTION
       return args
     })

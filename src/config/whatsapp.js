@@ -49,7 +49,8 @@ function getShareBaseOrigin() {
 const OG_PAGE_SUFFIX = '.html'
 
 /**
- * Nombre de archivo en `public/`: `og-{id en minúsculas}.html` (Netlify/Linux distinguen mayúsculas; si no coincide, cae el SPA y WhatsApp muestra el og:image del index: douro).
+ * Nombre de archivo en `public/`: `og-{id en minúsculas}.html`
+ * (si no existe página OG, se usa la imagen del producto).
  */
 function packOgPagePath(packId) {
   const id = typeof packId === 'string' ? packId.trim() : ''
@@ -57,35 +58,8 @@ function packOgPagePath(packId) {
   return `og-${id.toLowerCase()}${OG_PAGE_SUFFIX}`
 }
 
-/** Slug de página OG por id de pack (actual y legacy). */
-const OG_SLUG_BY_PACK_ID = {
-  '1': 'alchemysta',
-  '2': 'mujer-andina',
-  '3': 'rose',
-  '4': 'owm',
-  '5': 'algorta',
-  /** Tripack N°6 (no usar slug genérico `rockstar`: evita caché OG / confusión con caja N°10 Rock Stars). */
-  '6': 'tripack-rockstars',
-  '7': 'omg',
-  '8': 'sensaciones',
-  '9': 'maiporigen',
-  '11': 'algorta-grand-reserve',
-  '12': 'coleccionalgorta',
-  '13': 'innovacion',
-  alchemysta: 'alchemysta',
-  'mujer-andina': 'mujer-andina',
-  rose: 'rose',
-  owm: 'owm',
-  algorta: 'algorta',
-  rockstar: 'tripack-rockstars',
-  'tripack-rockstars': 'tripack-rockstars',
-  omg: 'omg',
-  sensaciones: 'sensaciones',
-  maiporigen: 'maiporigen',
-  'algorta-grand-reserve': 'algorta-grand-reserve',
-  coleccionalgorta: 'coleccionalgorta',
-  innovacion: 'innovacion',
-}
+/** Slug de página OG por id de pack (vacío mientras no se definan páginas OG nuevas). */
+const OG_SLUG_BY_PACK_ID = {}
 
 function ogSlugFromPackId(packId) {
   const id = typeof packId === 'string' ? packId.trim().toLowerCase() : ''

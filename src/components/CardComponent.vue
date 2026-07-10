@@ -255,12 +255,12 @@
   .card-pack-body {
     flex: 1 1 auto;
     min-height: 0;
-    padding: 0.65rem 0.7rem 0.75rem;
+    padding: 0.4rem 0.55rem 0.5rem;
   }
   
   .card-img-wrap {
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.04);
     border-radius: 1.125rem 1.125rem 0 0;
@@ -303,7 +303,7 @@
     bottom: 0;
     left: 0;
     z-index: 3;
-    padding: 0.65rem 0.75rem 0.7rem;
+    padding: 0.4rem 0.55rem 0.45rem;
     text-align: center;
     background: linear-gradient(
       180deg,
@@ -361,17 +361,17 @@
   
   @media (max-width: 575.98px) {
     .card-img-wrap {
-      aspect-ratio: unset;
-      height: min(72vw, 340px);
+      aspect-ratio: 16 / 10;
+      height: auto;
     }
   }
   
   .card-heading {
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.2rem;
   }
   
   .card-title {
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: var(--font-display);
     overflow-wrap: break-word;
     font-size: clamp(0.82rem, 2.45vw, 1.05rem);
     line-height: 1.2;
@@ -480,7 +480,7 @@
     border: none;
     border-top: 2px solid var(--vin-acento);
     opacity: 0.85;
-    margin: 0.65rem 0;
+    margin: 0.35rem 0;
   }
 
   .card-price-oferta-label {
