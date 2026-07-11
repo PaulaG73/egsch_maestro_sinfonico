@@ -1,6 +1,6 @@
 <template>
   <div class="navBar">
-    <nav id="navbar-principal" class="navbar navbar-expand-lg navbar-dark bg-vin-negro border-bottom py-2 py-md-3 nav-vino">
+    <nav id="navbar-principal" class="navbar navbar-expand-lg navbar-dark bg-vino-profundo border-bottom py-2 py-md-3 nav-vino">
       <div class="container-fluid px-3 px-lg-4">
         <button
           class="navbar-toggler ms-auto"
@@ -16,6 +16,29 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-3 align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#trayectoria">Trayectoria</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="productosDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Productos
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark nav-dropdown" aria-labelledby="productosDropdown">
+                <li>
+                  <a class="dropdown-item" href="#productos-sinfonicos">Productos Sinfónicos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#musica-peliculas">Música de Películas</a>
+                </li>
+              </ul>
+            </li>
             <li v-for="link in navLinks" :key="link.href" class="nav-item">
               <a class="nav-link" :href="link.href">{{ link.label }}</a>
             </li>
@@ -33,18 +56,15 @@
               @click="setLanguage(lang.code)"
             >
               <span class="lang-switcher__flag" aria-hidden="true">
-                <!-- España -->
                 <svg v-if="lang.code === 'es'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
                   <rect width="30" height="20" fill="#c60b1e"/>
                   <rect y="5" width="30" height="10" fill="#ffc400"/>
                 </svg>
-                <!-- Inglaterra -->
                 <svg v-else-if="lang.code === 'en'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
                   <rect width="30" height="20" fill="#fff"/>
                   <rect x="13" width="4" height="20" fill="#ce1124"/>
                   <rect y="8" width="30" height="4" fill="#ce1124"/>
                 </svg>
-                <!-- Francia -->
                 <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
                   <rect width="10" height="20" fill="#002395"/>
                   <rect x="10" width="10" height="20" fill="#fff"/>
@@ -67,7 +87,6 @@ const store = useStore()
 const locale = computed(() => store.getters.locale)
 
 const navLinks = [
-  { href: '#productos', label: 'Productos' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#proyectos', label: 'Proyectos destacados' },
   { href: '#testimonios', label: 'Testimonios' },
@@ -88,7 +107,7 @@ function setLanguage(code) {
 <style scoped>
 .nav-vino {
   border-color: var(--vin-borde-sutil) !important;
-  box-shadow: 0 1px 0 0 rgba(109, 44, 53, 0.35);
+  box-shadow: 0 1px 0 0 rgba(var(--vin-acento-rgb), 0.35);
 }
 
 .nav-vino .nav-link {
@@ -117,21 +136,43 @@ function setLanguage(code) {
   width: 0;
   height: 2px;
   border-radius: 2px;
-  background-color: var(--vin-acento, #6d2c35);
+  background-color: var(--vin-acento);
   transform: translateX(-50%);
   transition: width 0.28s ease;
 }
 
 .nav-vino .navbar-nav .nav-link:hover,
-.nav-vino .navbar-nav .nav-link:focus-visible {
+.nav-vino .navbar-nav .nav-link:focus-visible,
+.nav-vino .navbar-nav .nav-link.show {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
 }
 
 .nav-vino .navbar-nav .nav-link:hover::after,
-.nav-vino .navbar-nav .nav-link:focus-visible::after {
+.nav-vino .navbar-nav .nav-link:focus-visible::after,
+.nav-vino .navbar-nav .nav-link.show::after {
   width: calc(100% - 1.1rem);
+}
+
+.nav-dropdown {
+  --bs-dropdown-bg: var(--vin-profundo);
+  --bs-dropdown-link-color: rgba(255, 255, 255, 0.9);
+  --bs-dropdown-link-hover-bg: rgba(var(--vin-acento-rgb), 0.35);
+  --bs-dropdown-link-hover-color: #fff;
+  --bs-dropdown-link-active-bg: rgba(var(--vin-acento-rgb), 0.45);
+  --bs-dropdown-border-color: var(--vin-borde-sutil);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.nav-dropdown .dropdown-item {
+  border-radius: 0.35rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -140,7 +181,8 @@ function setLanguage(code) {
   }
 
   .nav-vino .navbar-nav .nav-link:hover,
-  .nav-vino .navbar-nav .nav-link:focus-visible {
+  .nav-vino .navbar-nav .nav-link:focus-visible,
+  .nav-vino .navbar-nav .nav-link.show {
     transform: none;
   }
 

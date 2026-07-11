@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "title": "Queen Sinfónico",
+    "image": "/img/Queen2.jpg",
+    "opciones": [
+      {
+        "id": "queen-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      },
+      {
+        "id": "queen-score-coro",
+        "nombre": "Score Coro",
+        "descripcion": "Partitura coral para ensayo y presentación.",
+        "price": "$XX.XXX"
+      },
+      {
+        "id": "queen-partes-individuales",
+        "nombre": "Partes individuales de orquesta",
+        "descripcion": "Partes por instrumento, listas para ensayo y concierto.",
+        "price": "$XX.XXX"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Whitney Houston Sinfónico",
+    "image": "/img/Withney2.jpg",
+    "opciones": [
+      {
+        "id": "whitney-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      },
+      {
+        "id": "whitney-score-coro",
+        "nombre": "Score Coro",
+        "descripcion": "Partitura coral para ensayo y presentación.",
+        "price": "$XX.XXX"
+      },
+      {
+        "id": "whitney-partes-individuales",
+        "nombre": "Partes individuales de orquesta",
+        "descripcion": "Partes por instrumento, listas para ensayo y concierto.",
+        "price": "$XX.XXX"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Nino Bravo Sinfónico",
+    "image": "/img/Nino1.jpeg",
+    "opciones": [
+      {
+        "id": "nino-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      },
+      {
+        "id": "nino-score-coro",
+        "nombre": "Score Coro",
+        "descripcion": "Partitura coral para ensayo y presentación.",
+        "price": "$XX.XXX"
+      },
+      {
+        "id": "nino-partes-individuales",
+        "nombre": "Partes individuales de orquesta",
+        "descripcion": "Partes por instrumento, listas para ensayo y concierto.",
+        "price": "$XX.XXX"
+      }
+    ]
+  }
+]

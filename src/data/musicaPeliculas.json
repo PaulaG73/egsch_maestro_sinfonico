@@ -1,0 +1,60 @@
+[
+  {
+    "id": "1",
+    "title": "Mi pobre angelito",
+    "subtitle": "Somewhere in my memory",
+    "image": "/img/Mi_pobre_angelito.jpg",
+    "imagePosition": "left top",
+    "opciones": [
+      {
+        "id": "angelito-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Superman",
+    "subtitle": "Main Theme",
+    "image": "/img/Superman.jpg",
+    "imagePosition": "center top",
+    "opciones": [
+      {
+        "id": "superman-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Frozen",
+    "subtitle": "Let It Go",
+    "image": "/img/Frozen.jpg",
+    "opciones": [
+      {
+        "id": "frozen-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "El Rey León",
+    "subtitle": "Circle of Life",
+    "image": "/img/Rey_leon.jpg",
+    "opciones": [
+      {
+        "id": "reyleon-full-score-orquesta",
+        "nombre": "Full Score Orquesta",
+        "descripcion": "Partitura completa para director y orquesta sinfónica.",
+        "price": "$XX.XXX"
+      }
+    ]
+  }
+]

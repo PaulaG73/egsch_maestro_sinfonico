@@ -21,10 +21,11 @@
       </div>
       <div class="hero-texto text-center text-md-start">
         <h1 class="hero-titulo mb-3">
-          Eduardo Gajardo Schmidlin — Maestro Sinfónico y Director de Orquesta
+          <span class="hero-titulo__nombre">Eduardo Gajardo Schmidlin</span>
+          <span class="hero-titulo__rol">Maestro Sinfónico y Director de Orquesta</span>
         </h1>
         <p class="hero-subtitulo mb-0">
-          Composición, arreglos y dirección orquestal.
+          <span class="hero-subtitulo__lineas">Composiciones - Orquestaciones - Arreglos - Transcripciones</span>
           <span class="hero-cita">«Llevando la música de la partitura al escenario».</span>
         </p>
       </div>
@@ -46,68 +47,38 @@
     </div>
   </section>
 
-  <!-- Productos -->
-  <section id="productos" class="home-section home-section--slate pt-4 pt-md-5 pb-2 pb-md-3">
+  <!-- Trayectoria -->
+  <section id="trayectoria" class="home-section home-section--ink py-4 py-md-5">
+    <div class="container trayectoria">
+      <h2 class="section-title mb-3 mb-md-4">Trayectoria</h2>
+      <p class="trayectoria__lead mb-0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+  </section>
+
+  <!-- Productos Sinfónicos -->
+  <section id="productos-sinfonicos" class="home-section home-section--slate pt-4 pt-md-5 pb-2 pb-md-3">
     <div class="container text-center">
-      <h2 class="section-title mb-4">Productos</h2>
+      <h2 class="section-title mb-4">Productos Sinfónicos</h2>
     </div>
-    <div
-      class="packs-carousel-outer d-flex align-items-center gap-2 gap-sm-3 px-2 px-sm-3"
-      @mouseenter="pauseCarousel"
-      @mouseleave="resumeCarousel"
-      @touchstart.passive="onCarouselTouchStart"
-      @touchend.passive="onCarouselTouchEnd"
-      @focusin="pauseCarousel"
-      @focusout="onCarouselFocusOut"
-    >
-      <button
-        type="button"
-        class="packs-carousel-arrow packs-carousel-arrow--prev"
-        aria-label="Ver productos anteriores"
-        @click="scrollCarousel(-1)"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-        </svg>
-      </button>
-      <div
-        ref="carouselRef"
-        class="packs-carousel-wrap flex-grow-1 min-w-0"
-        tabindex="0"
-        role="region"
-        aria-label="Carrusel de productos, desplazamiento horizontal"
-      >
-        <div class="packs-carousel-inner">
-          <div
-            v-for="(proyecto, idx) in proyectosLoop"
-            :key="`${proyecto.id}-${idx}`"
-            class="packs-carousel-slide"
-          >
-            <CardComponent
-              :pack-id="proyecto.id"
-              :title="proyecto.title"
-              :valle="proyecto.valle"
-              :bloques="proyecto.bloques"
-              :image="proyecto.image"
-              :price="proyecto.price"
-              :oferta-etiqueta="proyecto.ofertaEtiqueta || ''"
-              :price-oferta="proyecto.priceOferta || ''"
-              :agotado="Boolean(proyecto.agotado)"
-            />
-          </div>
-        </div>
-      </div>
-      <button
-        type="button"
-        class="packs-carousel-arrow packs-carousel-arrow--next"
-        aria-label="Ver productos siguientes"
-        @click="scrollCarousel(1)"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-      </button>
+    <ProductCarousel
+      :items="productosSinfonicos"
+      aria-label="productos sinfónicos"
+    />
+  </section>
+
+  <!-- Música de Películas -->
+  <section id="musica-peliculas" class="home-section home-section--ink pt-4 pt-md-5 pb-2 pb-md-3">
+    <div class="container text-center">
+      <h2 class="section-title mb-4">Música de Películas</h2>
     </div>
+    <ProductCarousel
+      :items="musicaPeliculas"
+      aria-label="música de películas"
+      compact
+    />
   </section>
 
   <!-- Servicios -->
@@ -120,7 +91,7 @@
           :key="servicio.id"
           class="col-12 col-sm-6 col-lg-3"
         >
-          <article class="servicio-card h-100">
+          <article class="servicio-card h-100 d-flex flex-column">
             <div class="servicio-card__icon" aria-hidden="true">
               <svg v-if="servicio.icon === 'composicion'" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M9 13c0 .552-.448 1-1 1s-1-.448-1-1V5c0-.552.448-1 1-1s1 .448 1 1z"/>
@@ -140,7 +111,13 @@
               </svg>
             </div>
             <h3 class="servicio-card__titulo">{{ servicio.titulo }}</h3>
-            <p class="servicio-card__descripcion mb-0">{{ servicio.descripcion }}</p>
+            <p class="servicio-card__descripcion">{{ servicio.descripcion }}</p>
+            <a
+              class="btn btn-outline-success servicio-card__cta mt-auto"
+              :href="cotizaMailto(servicio.titulo)"
+            >
+              Cotiza aquí
+            </a>
           </article>
         </div>
       </div>
@@ -169,161 +146,33 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import NavBar from '../components/NavBar'
 import FooterComponent from '../components/FooterComponent.vue'
-import CardComponent from '../components/CardComponent.vue'
-import catalogoPacks from '../data/catalogoPack.json'
+import ProductCarousel from '../components/ProductCarousel.vue'
+import productosSinfonicos from '../data/productosSinfonicos.json'
+import musicaPeliculas from '../data/musicaPeliculas.json'
+import servicios from '../data/servicios.json'
+
+/** Correo provisional para cotizaciones de servicios */
+const SERVICIOS_EMAIL = 'paulagajardosch@gmail.com'
+
+function cotizaMailto(titulo) {
+  const subject = encodeURIComponent(`Cotización — ${titulo}`)
+  const body = encodeURIComponent(
+    `Hola,\n\nMe interesa cotizar el servicio de ${titulo}.\n\nSaludos.`,
+  )
+  return `mailto:${SERVICIOS_EMAIL}?subject=${subject}&body=${body}`
+}
 
 /** Foto del director en `public/img/image_maestro.jpg` */
 const heroFotoSrc = '/img/image_maestro.jpg'
 
-const servicios = [
-  {
-    id: 1,
-    titulo: 'Composiciones',
-    descripcion: 'Creación de piezas sinfónicas, de cámara y arreglos a medida para distintos formatos orquestales.',
-    icon: 'composicion',
-  },
-  {
-    id: 2,
-    titulo: 'Orquestaciones',
-    descripcion: 'Adaptación y orquestación de obras existentes, respetando la intención musical y ampliando su paleta sonora.',
-    icon: 'arreglos',
-  },
-  {
-    id: 3,
-    titulo: 'Arreglos Corales',
-    descripcion: 'Preparación de ensayos, dirección en escenario y acompañamiento en procesos de grabación discográfica.',
-    icon: 'direccion',
-  },
-  {
-    id: 4,
-    titulo: 'Transcripción de partituras',
-    descripcion: 'Asesoría para instituciones, festivales y agrupaciones en programación, montaje y producción musical.',
-    icon: 'consultoria',
-  },
-]
-
-/** Dos series iguales para bucle de scroll sin salto visible */
-const proyectosLoop = computed(() => [...catalogoPacks, ...catalogoPacks])
-
-const carouselRef = ref(null)
 const heroFotoShellRef = ref(null)
 const heroFotoInView = ref(false)
-const carouselPaused = ref(false)
 const reduceMotion = ref(false)
 
 let heroFotoObserver = null
-
-/** Píxeles por frame (~60 fps); ~0.3 ≈ 18 px/s */
-const SCROLL_STEP = 0.32
-
-/** Ancho del hueco del carrusel (sustituye cqi sin container-type, evita avisos del validador CSS) */
-const PACKS_CAROUSEL_IW = '--packs-carousel-iw'
-
-let rafId = 0
-let syncCarouselRaf = null
-let touchResumeTimer = null
-let focusResumeTimer = null
-let arrowResumeTimer = null
-let carouselResizeObserver = null
-
-function syncCarouselInlineSize() {
-  const el = carouselRef.value
-  if (!el) return
-  const w = el.clientWidth
-  if (w > 0) el.style.setProperty(PACKS_CAROUSEL_IW, `${w}px`)
-}
-
-/**
- * ResizeObserver + setProperty en el mismo frame puede disparar
- * "ResizeObserver loop completed with undelivered notifications".
- * Se aplaza al siguiente paint (rAF).
- */
-function scheduleSyncCarouselInlineSize() {
-  if (syncCarouselRaf != null) return
-  syncCarouselRaf = requestAnimationFrame(() => {
-    syncCarouselRaf = null
-    syncCarouselInlineSize()
-  })
-}
-
-function pauseCarousel() {
-  carouselPaused.value = true
-}
-
-function resumeCarousel() {
-  carouselPaused.value = false
-}
-
-function onCarouselTouchStart() {
-  pauseCarousel()
-  if (touchResumeTimer) {
-    clearTimeout(touchResumeTimer)
-    touchResumeTimer = null
-  }
-}
-
-function onCarouselTouchEnd() {
-  if (touchResumeTimer) clearTimeout(touchResumeTimer)
-  touchResumeTimer = setTimeout(() => {
-    carouselPaused.value = false
-    touchResumeTimer = null
-  }, 2400)
-}
-
-function onCarouselFocusOut(ev) {
-  const outer = ev.currentTarget
-  const next = ev.relatedTarget
-  if (next && outer.contains(next)) return
-  if (focusResumeTimer) clearTimeout(focusResumeTimer)
-  focusResumeTimer = setTimeout(() => {
-    carouselPaused.value = false
-    focusResumeTimer = null
-  }, 400)
-}
-
-function scrollCarousel(direction) {
-  const el = carouselRef.value
-  if (!el) return
-  pauseCarousel()
-  if (arrowResumeTimer) clearTimeout(arrowResumeTimer)
-
-  const inner = el.querySelector('.packs-carousel-inner')
-  const firstSlide = inner?.querySelector('.packs-carousel-slide')
-  let delta = el.clientWidth * direction
-  if (inner && firstSlide) {
-    const gapPx = parseFloat(getComputedStyle(inner).gap) || 0
-    const slideW = firstSlide.offsetWidth
-    const threeCols = window.matchMedia('(min-width: 768px)').matches
-    /* Móvil: un avance = 1 tarjeta + hueco; desktop: el viewport ya encaja 3 enteras */
-    if (!threeCols) delta = (slideW + gapPx) * direction
-  }
-
-  el.scrollBy({
-    left: delta,
-    behavior: reduceMotion.value ? 'auto' : 'smooth',
-  })
-  arrowResumeTimer = setTimeout(() => {
-    carouselPaused.value = false
-    arrowResumeTimer = null
-  }, 3200)
-}
-
-function tick() {
-  const el = carouselRef.value
-  if (el && !carouselPaused.value && !reduceMotion.value) {
-    const half = el.scrollWidth / 2
-    if (half > 1) {
-      el.scrollLeft += SCROLL_STEP
-      if (el.scrollLeft >= half) {
-        el.scrollLeft -= half
-      }
-    }
-  }
-  rafId = requestAnimationFrame(tick)
-}
 
 function setupHeroFotoReveal() {
   if (reduceMotion.value) {
@@ -356,28 +205,11 @@ function setupHeroFotoReveal() {
 onMounted(() => {
   reduceMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   setupHeroFotoReveal()
-  syncCarouselInlineSize()
-  const el = carouselRef.value
-  if (el && typeof ResizeObserver !== 'undefined') {
-    carouselResizeObserver = new ResizeObserver(() => scheduleSyncCarouselInlineSize())
-    carouselResizeObserver.observe(el)
-  }
-  rafId = requestAnimationFrame(tick)
 })
 
 onUnmounted(() => {
   heroFotoObserver?.disconnect()
   heroFotoObserver = null
-  if (syncCarouselRaf != null) {
-    cancelAnimationFrame(syncCarouselRaf)
-    syncCarouselRaf = null
-  }
-  carouselResizeObserver?.disconnect()
-  carouselResizeObserver = null
-  cancelAnimationFrame(rafId)
-  if (touchResumeTimer) clearTimeout(touchResumeTimer)
-  if (focusResumeTimer) clearTimeout(focusResumeTimer)
-  if (arrowResumeTimer) clearTimeout(arrowResumeTimer)
 })
 
 </script>
@@ -429,6 +261,19 @@ onUnmounted(() => {
   font-size: clamp(0.9rem, 2.2vw, 1rem);
 }
 
+.trayectoria {
+  max-width: 42rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.trayectoria__lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--vin-texto-muted);
+}
+
 /* Hero */
 .hero-foto-shell {
   --foto-ancho: min(100%, 22rem);
@@ -450,12 +295,37 @@ onUnmounted(() => {
 
 .hero-foto {
   width: 100%;
-  border-radius: 1rem;
+  position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #1a1a1a 0%, #2a2024 100%);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 12px 36px rgba(0, 0, 0, 0.45);
+  background: transparent;
+  /* Sin borde duro: la viñeta funde la foto con el fondo de la sección */
+  -webkit-mask-image: radial-gradient(
+    ellipse 92% 88% at 50% 42%,
+    #000 42%,
+    rgba(0, 0, 0, 0.85) 62%,
+    rgba(0, 0, 0, 0.35) 78%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 92% 88% at 50% 42%,
+    #000 42%,
+    rgba(0, 0, 0, 0.85) 62%,
+    rgba(0, 0, 0, 0.35) 78%,
+    transparent 100%
+  );
+}
+
+.hero-foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 78% 72% at 50% 40%,
+    transparent 48%,
+    rgba(10, 10, 10, 0.45) 72%,
+    var(--vin-negro-marca) 100%
+  );
 }
 
 @media (min-width: 768px) {
@@ -484,30 +354,48 @@ onUnmounted(() => {
 .hero-texto {
   flex: 0 1 auto;
   min-width: 0;
-  max-width: min(100%, 42rem);
+  max-width: 100%;
 }
 
 @media (min-width: 768px) {
   .hero-texto {
     flex: 1 1 0;
-    max-width: 32rem;
+    max-width: min(100%, 36rem);
   }
 }
 
 .hero-titulo {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 4.5vw, 2rem);
   font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: 0.04em;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
   color: var(--vin-texto-claro);
+}
+
+.hero-titulo__nombre,
+.hero-titulo__rol {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-titulo__nombre {
+  font-size: clamp(0.78rem, 4.2vw, 1.5rem);
+}
+
+.hero-titulo__rol {
+  font-size: clamp(0.68rem, 3.5vw, 1.28rem);
 }
 
 .hero-subtitulo {
   font-family: var(--font-body);
-  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
-  line-height: 1.65;
+  line-height: 1.55;
   color: var(--vin-texto-muted);
+}
+
+.hero-subtitulo__lineas {
+  display: block;
+  white-space: nowrap;
+  font-size: clamp(0.62rem, 3vw, 1rem);
 }
 
 .hero-cita {
@@ -516,6 +404,8 @@ onUnmounted(() => {
   font-style: italic;
   color: var(--vin-acento-sobre-negro);
   font-weight: 600;
+  white-space: nowrap;
+  font-size: clamp(0.62rem, 3vw, 1rem);
 }
 
 /* Video */
@@ -527,7 +417,7 @@ onUnmounted(() => {
 .video-player-placeholder {
   height: clamp(3.25rem, 8vw, 4.25rem);
   border-radius: 0.45rem;
-  background: linear-gradient(160deg, #1c1418 0%, #0f0f0f 100%);
+  background: linear-gradient(160deg, #141c2a 0%, #0f0f0f 100%);
   border: 1px solid var(--vin-borde-sutil);
   display: flex;
   flex-direction: row;
@@ -595,6 +485,19 @@ onUnmounted(() => {
   line-height: 1.55;
   color: var(--vin-texto-muted);
   text-align: center;
+  margin-bottom: 1.15rem;
+  flex-grow: 1;
+}
+
+.servicio-card__cta {
+  align-self: center;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -605,108 +508,5 @@ onUnmounted(() => {
   .servicio-card:hover {
     transform: none;
   }
-}
-
-.packs-carousel-outer {
-  max-width: 100%;
-  min-height: 0;
-}
-
-.packs-carousel-arrow {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(2.5rem, 8vw, 2.85rem);
-  height: clamp(2.5rem, 8vw, 2.85rem);
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--vin-acento);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(var(--vin-acento-rgb), 0.35);
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.15s ease,
-    box-shadow 0.2s ease;
-}
-
-.packs-carousel-arrow:hover {
-  background-color: var(--vin-acento-hover);
-  box-shadow: 0 3px 12px rgba(var(--vin-acento-rgb), 0.45);
-}
-
-.packs-carousel-arrow:active {
-  background-color: var(--vin-acento-active);
-  transform: scale(0.96);
-}
-
-.packs-carousel-arrow:focus-visible {
-  outline: 2px solid rgba(var(--vin-acento-rgb), 0.55);
-  outline-offset: 3px;
-}
-
-.packs-carousel-wrap {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(var(--vin-acento-rgb), 0.45) transparent;
-  padding-block: 0.25rem 0.75rem;
-  outline: none;
-}
-
-.packs-carousel-wrap:focus-visible {
-  box-shadow: 0 0 0 2px rgba(var(--vin-acento-rgb), 0.35);
-  border-radius: 0.35rem;
-}
-
-.packs-carousel-wrap::-webkit-scrollbar {
-  height: 6px;
-}
-
-.packs-carousel-wrap::-webkit-scrollbar-thumb {
-  background: rgba(var(--vin-acento-rgb), 0.4);
-  border-radius: 4px;
-}
-
-.packs-carousel-inner {
-  --packs-gap: clamp(0.75rem, 2vw, 1.15rem);
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: var(--packs-gap);
-  width: max-content;
-  min-height: 100%;
-}
-
-/*
- * Siempre tarjetas enteras en el viewport: 1 columna en móvil, 3 en md+.
- * --packs-carousel-iw = ancho del área scroll (ResizeObserver).
- */
-.packs-carousel-slide {
-  flex: 0 0 auto;
-  box-sizing: border-box;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  min-height: 0;
-  width: var(--packs-carousel-iw, 100%);
-  display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 768px) {
-  .packs-carousel-slide {
-    width: calc((var(--packs-carousel-iw, 100%) - 2 * var(--packs-gap)) / 3);
-  }
-}
-
-.packs-carousel-slide > * {
-  flex: 1 1 auto;
-  width: 100%;
-  min-height: 0;
-  align-self: stretch;
 }
 </style>

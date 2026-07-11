@@ -141,23 +141,30 @@ export function getWhatsAppFooterUrl() {
 }
 
 /**
- * Enlace api.whatsapp.com: saludo + datos del pack + vista previa + precio.
- * @param {{ title?: string, valle?: string, price?: string, ofertaEtiqueta?: string, image?: string, packId?: string }} pack
+ * Enlace WhatsApp para una opción de producto (partitura / formato).
+ * @param {{
+ *   productId?: string,
+ *   title?: string,
+ *   subtitle?: string,
+ *   image?: string,
+ *   opcion?: { id?: string, nombre?: string, descripcion?: string, price?: string }
+ * }} payload
  */
-export function getWhatsAppPackUrl(pack) {
+export function getWhatsAppProductOptionUrl(payload) {
   const digits = digitsOnly()
   if (!digits) return '#'
 
-  const title = typeof pack?.title === 'string' ? pack.title.trim() : ''
-  const valle = typeof pack?.valle === 'string' ? pack.valle.trim() : ''
-  const price = typeof pack?.price === 'string' ? pack.price.trim() : ''
-  const ofertaEtiqueta =
-    typeof pack?.ofertaEtiqueta === 'string' ? pack.ofertaEtiqueta.trim() : ''
-  const previewUrl = resolvePackPreviewUrlForWhatsApp(pack?.packId, pack?.image || '')
+  const title = typeof payload?.title === 'string' ? payload.title.trim() : ''
+  const subtitle = typeof payload?.subtitle === 'string' ? payload.subtitle.trim() : ''
+  const opcion = payload?.opcion && typeof payload.opcion === 'object' ? payload.opcion : {}
+  const opcionNombre = typeof opcion.nombre === 'string' ? opcion.nombre.trim() : ''
+  const price = typeof opcion.price === 'string' ? opcion.price.trim() : ''
+  const previewUrl = resolvePackPreviewUrlForWhatsApp(payload?.productId, payload?.image || '')
 
-  const parts = ['Hola Vinóloga, quiero este pack']
+  const parts = ['Hola, quiero solicitar:']
   if (title) parts.push(title)
-  if (valle) parts.push(valle)
+  if (subtitle) parts.push(subtitle)
+  if (opcionNombre) parts.push(`Opción: ${opcionNombre}`)
   parts.push('')
 
   if (previewUrl && /^https:\/\//i.test(previewUrl)) {
@@ -167,15 +174,25 @@ export function getWhatsAppPackUrl(pack) {
 
   const priceTxt = priceForWhatsAppMessage(price)
   if (priceTxt) {
-    if (ofertaEtiqueta) {
-      parts.push(`${ofertaEtiqueta} (CLP): ${priceTxt}`)
-    } else {
-      parts.push(`Precio (CLP): ${priceTxt}`)
-    }
+    parts.push(`Precio (CLP): ${priceTxt}`)
   }
 
   const text = parts.join('\n').trimEnd()
   return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(text)}`
+}
+
+/** @deprecated Prefer getWhatsAppProductOptionUrl */
+export function getWhatsAppPackUrl(pack) {
+  return getWhatsAppProductOptionUrl({
+    productId: pack?.packId,
+    title: pack?.title,
+    subtitle: pack?.valle,
+    image: pack?.image,
+    opcion: {
+      nombre: pack?.title,
+      price: pack?.price,
+    },
+  })
 }
 
 export function isWhatsAppConfigured() {
