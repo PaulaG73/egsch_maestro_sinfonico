@@ -5,6 +5,11 @@ function publicSiteOrigin() {
   return (process.env.VUE_APP_PUBLIC_SITE_URL || '').replace(/\/+$/, '')
 }
 
+/** Solo el host, sin protocolo — evita path.resolve de Windows sobre "https://..." */
+function publicSiteHost() {
+  return publicSiteOrigin().replace(/^https?:\/\//i, '')
+}
+
 const OG_DESCRIPTION =
   'Composición, arreglos y dirección orquestal. Llevando la música del papel al podio.'
 
@@ -28,12 +33,11 @@ module.exports = defineConfig({
   chainWebpack(config) {
     /* Con `pages`, el plugin de HtmlWebpackPlugin se llama `html-<nombrePagina>` */
     config.plugin('html-index').tap((args) => {
-      const origin = publicSiteOrigin()
+      const host = publicSiteHost()
       const opts = args[0]
-      opts.ogPageUrl = origin ? `${origin}/` : ''
-      opts.ogImageUrl = origin ? `${origin}/img/image_maestro.jpg` : ''
-      opts.ogImageWidth = 1200
-      opts.ogImageHeight = 630
+      opts.ogSiteHost = host
+      opts.ogImageWidth = 1600
+      opts.ogImageHeight = 1066
       opts.ogDescription = OG_DESCRIPTION
       return args
     })

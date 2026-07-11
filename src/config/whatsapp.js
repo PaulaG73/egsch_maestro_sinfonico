@@ -132,9 +132,7 @@ export function getWhatsAppUrl() {
 
 /**
  * WhatsApp desde el pie (CTA Contáctanos).
- * Adjunta la URL pública de la foto del hero para la vista previa en el chat.
- * Requiere `VUE_APP_PUBLIC_SITE_URL` apuntando al sitio desplegado (HTTPS),
- * donde exista `/img/image_maestro.jpg`.
+ * Usa `/compartir.html` (meta OG estáticas) para la vista previa de la foto del hero.
  */
 export function getWhatsAppFooterUrl() {
   const digits = digitsOnly()
@@ -144,12 +142,12 @@ export function getWhatsAppFooterUrl() {
     'Hola Eduardo, estoy escribiendo desde tu página web y quisiera conversar contigo sobre un tema en particular. Estás disponible?'
 
   const base = getShareBaseOrigin()
-  const heroImageUrl = base ? `${base}/img/image_maestro.jpg` : ''
+  const shareUrl = base ? `${base}/compartir.html` : ''
 
   const parts = [text]
-  if (heroImageUrl && /^https:\/\//i.test(heroImageUrl)) {
+  if (shareUrl && /^https:\/\//i.test(shareUrl)) {
     parts.push('')
-    parts.push(heroImageUrl)
+    parts.push(shareUrl)
   }
 
   return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(parts.join('\n').trimEnd())}`

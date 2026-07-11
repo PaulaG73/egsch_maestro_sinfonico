@@ -10,15 +10,21 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="description" content="<%= htmlWebpackPlugin.options.ogDescription %>">
-    <% if (htmlWebpackPlugin.options.ogPageUrl) { %>
+    <!--
+      URLs OG armadas por partes para evitar que HtmlWebpackPlugin en Windows
+      resuelva "https://..." como ruta de disco (rompe la vista previa de WhatsApp).
+    -->
+    <% if (htmlWebpackPlugin.options.ogSiteHost) {
+      var ogHost = htmlWebpackPlugin.options.ogSiteHost;
+    %>
     <meta property="og:site_name" content="Eduardo Gajardo Schmidlin">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
     <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
     <meta property="og:description" content="<%= htmlWebpackPlugin.options.ogDescription %>">
-    <meta property="og:url" content="<%= htmlWebpackPlugin.options.ogPageUrl %>">
-    <meta property="og:image" content="<%= htmlWebpackPlugin.options.ogImageUrl %>">
-    <meta property="og:image:secure_url" content="<%= htmlWebpackPlugin.options.ogImageUrl %>">
+    <meta property="og:url" content="https://<%= ogHost %>/">
+    <meta property="og:image" content="https://<%= ogHost %>/img/image_maestro.jpg">
+    <meta property="og:image:secure_url" content="https://<%= ogHost %>/img/image_maestro.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="<%= htmlWebpackPlugin.options.ogImageWidth %>">
     <meta property="og:image:height" content="<%= htmlWebpackPlugin.options.ogImageHeight %>">
@@ -26,7 +32,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>">
     <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.ogDescription %>">
-    <meta name="twitter:image" content="<%= htmlWebpackPlugin.options.ogImageUrl %>">
+    <meta name="twitter:image" content="https://<%= ogHost %>/img/image_maestro.jpg">
     <% } %>
   </head>
   <body>
