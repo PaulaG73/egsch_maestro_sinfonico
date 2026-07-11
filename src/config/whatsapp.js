@@ -11,7 +11,7 @@ const PUBLIC_SITE_FROM_ENV = process.env.VUE_APP_PUBLIC_SITE_URL || ''
  * Si el .env no llega al bundle en dev, el enlace a la foto no puede quedar vacío.
  * Cambia esto si despliegas en otro dominio (o define siempre VUE_APP_PUBLIC_SITE_URL).
  */
-const WHATSAPP_FALLBACK_SITE_ORIGIN = 'https://catalogofinde.netlify.app'
+const WHATSAPP_FALLBACK_SITE_ORIGIN = 'https://egschmaestrosinfonico.netlify.app'
 
 function publicSiteUrlFromEnv() {
   return PUBLIC_SITE_FROM_ENV
@@ -131,13 +131,28 @@ export function getWhatsAppUrl() {
 }
 
 /**
- * WhatsApp desde el pie: un solo texto (api.whatsapp.com evita rarezas con wa.me + borradores viejos).
+ * WhatsApp desde el pie (CTA Contáctanos).
+ * Adjunta la URL pública de la foto del hero para la vista previa en el chat.
+ * Requiere `VUE_APP_PUBLIC_SITE_URL` apuntando al sitio desplegado (HTTPS),
+ * donde exista `/img/image_maestro.jpg`.
  */
 export function getWhatsAppFooterUrl() {
   const digits = digitsOnly()
   if (!digits) return '#'
-  const text = 'Hola Vinóloga, quiero hacer un pedido de vinos...'
-  return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(text)}`
+
+  const text =
+    'Hola Eduardo, estoy escribiendo desde tu página web y quisiera conversar contigo sobre un tema en particular. Estás disponible?'
+
+  const base = getShareBaseOrigin()
+  const heroImageUrl = base ? `${base}/img/image_maestro.jpg` : ''
+
+  const parts = [text]
+  if (heroImageUrl && /^https:\/\//i.test(heroImageUrl)) {
+    parts.push('')
+    parts.push(heroImageUrl)
+  }
+
+  return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(parts.join('\n').trimEnd())}`
 }
 
 /**

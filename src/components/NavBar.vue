@@ -1,9 +1,39 @@
 <template>
   <div class="navBar">
     <nav id="navbar-principal" class="navbar navbar-expand-lg navbar-dark bg-vino-profundo border-bottom py-2 py-md-3 nav-vino">
-      <div class="container-fluid px-3 px-lg-4">
+      <div class="container-fluid px-3 px-lg-4 navbar-inner">
+        <div class="lang-switcher d-flex align-items-center gap-1">
+          <button
+            v-for="lang in languages"
+            :key="lang.code"
+            type="button"
+            class="lang-switcher__btn"
+            :class="{ 'lang-switcher__btn--active': locale === lang.code }"
+            :aria-label="lang.label"
+            :title="lang.label"
+            @click="setLanguage(lang.code)"
+          >
+            <span class="lang-switcher__flag" aria-hidden="true">
+              <svg v-if="lang.code === 'es'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+                <rect width="30" height="20" fill="#c60b1e"/>
+                <rect y="5" width="30" height="10" fill="#ffc400"/>
+              </svg>
+              <svg v-else-if="lang.code === 'en'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+                <rect width="30" height="20" fill="#fff"/>
+                <rect x="13" width="4" height="20" fill="#ce1124"/>
+                <rect y="8" width="30" height="4" fill="#ce1124"/>
+              </svg>
+              <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+                <rect width="10" height="20" fill="#002395"/>
+                <rect x="10" width="10" height="20" fill="#fff"/>
+                <rect x="20" width="10" height="20" fill="#ed2939"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+
         <button
-          class="navbar-toggler ms-auto"
+          class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -43,36 +73,6 @@
               <a class="nav-link" :href="link.href">{{ link.label }}</a>
             </li>
           </ul>
-
-          <div class="lang-switcher d-flex align-items-center justify-content-center justify-content-lg-end gap-1 mb-3 mb-lg-0">
-            <button
-              v-for="lang in languages"
-              :key="lang.code"
-              type="button"
-              class="lang-switcher__btn"
-              :class="{ 'lang-switcher__btn--active': locale === lang.code }"
-              :aria-label="lang.label"
-              :title="lang.label"
-              @click="setLanguage(lang.code)"
-            >
-              <span class="lang-switcher__flag" aria-hidden="true">
-                <svg v-if="lang.code === 'es'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
-                  <rect width="30" height="20" fill="#c60b1e"/>
-                  <rect y="5" width="30" height="10" fill="#ffc400"/>
-                </svg>
-                <svg v-else-if="lang.code === 'en'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
-                  <rect width="30" height="20" fill="#fff"/>
-                  <rect x="13" width="4" height="20" fill="#ce1124"/>
-                  <rect y="8" width="30" height="4" fill="#ce1124"/>
-                </svg>
-                <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
-                  <rect width="10" height="20" fill="#002395"/>
-                  <rect x="10" width="10" height="20" fill="#fff"/>
-                  <rect x="20" width="10" height="20" fill="#ed2939"/>
-                </svg>
-              </span>
-            </button>
-          </div>
         </div>
       </div>
     </nav>
@@ -105,6 +105,42 @@ function setLanguage(code) {
 </script>
 
 <style scoped>
+.navbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.lang-switcher {
+  order: 1;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.navbar-toggler {
+  order: 2;
+  margin-left: 0.5rem;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.navbar-collapse {
+  order: 3;
+  flex-basis: 100%;
+}
+
+@media (min-width: 992px) {
+  .lang-switcher {
+    order: 3;
+    margin-left: 1rem;
+  }
+
+  .navbar-collapse {
+    order: 2;
+    flex-basis: auto;
+    flex-grow: 1;
+  }
+}
+
 .nav-vino {
   border-color: var(--vin-borde-sutil) !important;
   box-shadow: 0 1px 0 0 rgba(var(--vin-acento-rgb), 0.35);
@@ -191,10 +227,6 @@ function setLanguage(code) {
   }
 }
 
-.navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.35);
-}
-
 .lang-switcher__btn {
   display: inline-flex;
   align-items: center;
@@ -242,16 +274,5 @@ function setLanguage(code) {
   display: block;
   width: 100%;
   height: 100%;
-}
-
-@media (min-width: 992px) {
-  .navbar-collapse {
-    align-items: center;
-  }
-
-  .lang-switcher {
-    flex-shrink: 0;
-    margin-left: 1rem;
-  }
 }
 </style>
