@@ -132,8 +132,7 @@ export function getWhatsAppUrl() {
 
 /**
  * WhatsApp desde el pie (CTA Contáctanos).
- * El enlace de vista previa debe ser compartir.html (sin redirect) para que
- * WhatsApp lea og:image correctamente.
+ * Solo el mensaje de texto — sin enlace (la vista previa de foto es al compartir la URL del sitio).
  */
 export function getWhatsAppFooterUrl() {
   const digits = digitsOnly()
@@ -142,11 +141,7 @@ export function getWhatsAppFooterUrl() {
   const text =
     'Hola Eduardo, estoy escribiendo desde tu página web y quisiera conversar contigo sobre un tema en particular. Estás disponible?'
 
-  /* URL fija del sitio publicado — evita depender del build local */
-  const shareUrl = 'https://egschmaestrosinfonico.netlify.app/compartir.html'
-
-  const message = `${text}\n\n${shareUrl}`
-  return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(message)}`
+  return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(text)}`
 }
 
 /**
