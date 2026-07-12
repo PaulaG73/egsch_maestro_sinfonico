@@ -30,6 +30,7 @@
         </p>
       </div>
     </div>
+    <SectionScrollUp />
   </section>
 
   <!-- Reproductor de video (franja provisional) -->
@@ -44,6 +45,7 @@
           <p class="video-player-label mb-0">Video próximamente</p>
         </div>
       </div>
+      <SectionScrollUp />
     </div>
   </section>
 
@@ -55,6 +57,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </p>
+      <SectionScrollUp />
     </div>
   </section>
 
@@ -67,6 +70,7 @@
       :items="productosSinfonicos"
       aria-label="productos sinfónicos"
     />
+    <SectionScrollUp />
   </section>
 
   <!-- Música de Películas -->
@@ -79,6 +83,7 @@
       aria-label="música de películas"
       compact
     />
+    <SectionScrollUp />
   </section>
 
   <!-- Servicios -->
@@ -121,6 +126,7 @@
           </article>
         </div>
       </div>
+      <SectionScrollUp />
     </div>
   </section>
 
@@ -129,6 +135,7 @@
     <div class="container">
       <h2 class="section-title mb-3">Testimonios</h2>
       <p class="section-placeholder mb-0">Contenido próximamente.</p>
+      <SectionScrollUp />
     </div>
   </section>
 
@@ -142,6 +149,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import NavBar from '../components/NavBar'
 import FooterComponent from '../components/FooterComponent.vue'
 import ProductCarousel from '../components/ProductCarousel.vue'
+import SectionScrollUp from '../components/SectionScrollUp.vue'
 import productosSinfonicos from '../data/productosSinfonicos.json'
 import musicaPeliculas from '../data/musicaPeliculas.json'
 import servicios from '../data/servicios.json'

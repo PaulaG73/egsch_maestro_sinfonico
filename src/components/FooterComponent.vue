@@ -17,11 +17,14 @@
       </div>
 
       <p class="mb-0 footer-copy">Derechos reservados &copy; 2026 Paula Gajardo Schmidlin</p>
+
+      <SectionScrollUp />
     </div>
   </footer>
 </template>
 
 <script setup>
+import SectionScrollUp from './SectionScrollUp.vue'
 import { getWhatsAppFooterUrl } from '@/config/whatsapp'
 
 /** Placeholders de contacto — reemplazar cuando estén definitivos */
