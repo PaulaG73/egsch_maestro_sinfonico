@@ -3,7 +3,7 @@
 
   <!-- Hero / Sobre mí -->
   <section id="sobre-mi" class="home-section home-section--ink py-4 py-md-5">
-    <div class="container hero d-flex flex-column flex-md-row-reverse align-items-center justify-content-center gap-4 gap-md-5">
+    <div class="container hero d-flex flex-column flex-lg-row-reverse align-items-center justify-content-center gap-4 gap-lg-5">
       <div
         ref="heroFotoShellRef"
         class="hero-foto-shell"
@@ -19,7 +19,7 @@
           >
         </div>
       </div>
-      <div class="hero-texto text-center text-md-start">
+      <div class="hero-texto text-center text-lg-start">
         <h1 class="hero-titulo mb-3">
           <span class="hero-titulo__nombre">Eduardo Gajardo Schmidlin</span>
           <span class="hero-titulo__rol">{{ t('hero.role') }}</span>
@@ -323,10 +323,18 @@ onUnmounted(() => {
   );
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .hero-foto-shell {
-    --foto-ancho: 26rem;
+    /* Tablet landscape / desktop estrecho: foto más contenida */
+    --foto-ancho: min(40%, 17.5rem);
     margin-inline: 0;
+    flex: 0 1 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-foto-shell {
+    --foto-ancho: min(42%, 26rem);
   }
 }
 
@@ -352,7 +360,7 @@ onUnmounted(() => {
   max-width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .hero-texto {
     flex: 1 1 0;
     max-width: min(100%, 36rem);
@@ -370,7 +378,14 @@ onUnmounted(() => {
 .hero-titulo__nombre,
 .hero-titulo__rol {
   display: block;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+@media (min-width: 1200px) {
+  .hero-titulo__nombre,
+  .hero-titulo__rol {
+    white-space: nowrap;
+  }
 }
 
 .hero-titulo__nombre {
@@ -389,7 +404,7 @@ onUnmounted(() => {
 
 .hero-subtitulo__lineas {
   display: block;
-  white-space: nowrap;
+  white-space: normal;
   font-size: clamp(0.62rem, 3vw, 1rem);
 }
 
@@ -399,8 +414,15 @@ onUnmounted(() => {
   font-style: italic;
   color: var(--ms-accent-on-dark);
   font-weight: 600;
-  white-space: nowrap;
+  white-space: normal;
   font-size: clamp(0.62rem, 3vw, 1rem);
+}
+
+@media (min-width: 1200px) {
+  .hero-subtitulo__lineas,
+  .hero-cita {
+    white-space: nowrap;
+  }
 }
 
 /* Video */
