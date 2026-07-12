@@ -13,7 +13,7 @@
           <img
             class="hero-foto__img"
             :src="heroFotoSrc"
-            alt="Eduardo Gajardo Schmidlin, Maestro Sinfónico y Director de Orquesta"
+            :alt="t('hero.photoAlt')"
             loading="eager"
             decoding="async"
           >
@@ -22,11 +22,11 @@
       <div class="hero-texto text-center text-md-start">
         <h1 class="hero-titulo mb-3">
           <span class="hero-titulo__nombre">Eduardo Gajardo Schmidlin</span>
-          <span class="hero-titulo__rol">Maestro Sinfónico y Director de Orquesta</span>
+          <span class="hero-titulo__rol">{{ t('hero.role') }}</span>
         </h1>
         <p class="hero-subtitulo mb-0">
-          <span class="hero-subtitulo__lineas">Composiciones - Orquestaciones - Arreglos - Transcripciones</span>
-          <span class="hero-cita">«Llevando la música de la partitura al escenario».</span>
+          <span class="hero-subtitulo__lineas">{{ t('hero.disciplines') }}</span>
+          <span class="hero-cita">{{ t('hero.quote') }}</span>
         </p>
       </div>
     </div>
@@ -82,7 +82,7 @@
   </section>
 
   <!-- Servicios -->
-  <section id="servicios" class="home-section home-section--ink py-4 py-md-5">
+  <section id="servicios" class="home-section home-section--slate py-4 py-md-5">
     <div class="container">
       <h2 class="section-title mb-4 mb-md-5">Servicios</h2>
       <div class="row g-3 g-md-4 justify-content-center">
@@ -124,14 +124,6 @@
     </div>
   </section>
 
-  <!-- Proyectos destacados (placeholder) -->
-  <section id="proyectos" class="home-section home-section--slate py-4 py-md-5">
-    <div class="container">
-      <h2 class="section-title mb-3">Proyectos destacados</h2>
-      <p class="section-placeholder mb-0">Contenido próximamente.</p>
-    </div>
-  </section>
-
   <!-- Testimonios (placeholder) -->
   <section id="testimonios" class="home-section home-section--ink py-4 py-md-5">
     <div class="container">
@@ -153,6 +145,9 @@ import ProductCarousel from '../components/ProductCarousel.vue'
 import productosSinfonicos from '../data/productosSinfonicos.json'
 import musicaPeliculas from '../data/musicaPeliculas.json'
 import servicios from '../data/servicios.json'
+import { useI18n } from '@/i18n/useI18n'
+
+const { t } = useI18n()
 
 /** Correo provisional para cotizaciones de servicios */
 const SERVICIOS_EMAIL = 'paulagajardosch@gmail.com'
@@ -216,15 +211,15 @@ onUnmounted(() => {
 
 <style scoped>
 .home-section {
-  background-color: var(--vin-negro-marca);
+  background-color: var(--ms-ink);
 }
 
 .home-section--ink {
-  background-color: var(--vin-negro-marca);
+  background-color: var(--ms-ink);
 }
 
 .home-section--slate {
-  background-color: var(--vin-fondo-packs);
+  background-color: var(--ms-slate);
 }
 
 .section-title {
@@ -232,7 +227,7 @@ onUnmounted(() => {
   font-size: clamp(1.3rem, 4vw, 1.9rem);
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--vin-texto-claro);
+  color: var(--ms-text);
   position: relative;
   display: inline-block;
   padding-bottom: 0.75rem;
@@ -249,15 +244,15 @@ onUnmounted(() => {
   border-radius: 2px;
   background: linear-gradient(
     90deg,
-    var(--vin-acento) 0%,
-    rgba(var(--vin-acento-rgb), 0.5) 100%
+    var(--ms-accent) 0%,
+    rgba(var(--ms-accent-rgb), 0.5) 100%
   );
   opacity: 0.88;
 }
 
 .section-placeholder {
   font-family: var(--font-body);
-  color: var(--vin-texto-muted);
+  color: var(--ms-text-muted);
   font-size: clamp(0.9rem, 2.2vw, 1rem);
 }
 
@@ -271,7 +266,7 @@ onUnmounted(() => {
   font-family: var(--font-body);
   font-size: clamp(0.95rem, 2.4vw, 1.1rem);
   line-height: 1.65;
-  color: var(--vin-texto-muted);
+  color: var(--ms-text-muted);
 }
 
 /* Hero */
@@ -324,7 +319,7 @@ onUnmounted(() => {
     ellipse 78% 72% at 50% 40%,
     transparent 48%,
     rgba(10, 10, 10, 0.45) 72%,
-    var(--vin-negro-marca) 100%
+    var(--ms-ink) 100%
   );
 }
 
@@ -369,7 +364,7 @@ onUnmounted(() => {
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: 0.03em;
-  color: var(--vin-texto-claro);
+  color: var(--ms-text);
 }
 
 .hero-titulo__nombre,
@@ -389,7 +384,7 @@ onUnmounted(() => {
 .hero-subtitulo {
   font-family: var(--font-body);
   line-height: 1.55;
-  color: var(--vin-texto-muted);
+  color: var(--ms-text-muted);
 }
 
 .hero-subtitulo__lineas {
@@ -402,7 +397,7 @@ onUnmounted(() => {
   display: block;
   margin-top: 0.35rem;
   font-style: italic;
-  color: var(--vin-acento-sobre-negro);
+  color: var(--ms-accent-on-dark);
   font-weight: 600;
   white-space: nowrap;
   font-size: clamp(0.62rem, 3vw, 1rem);
@@ -418,13 +413,13 @@ onUnmounted(() => {
   height: clamp(3.25rem, 8vw, 4.25rem);
   border-radius: 0.45rem;
   background: linear-gradient(160deg, #141c2a 0%, #0f0f0f 100%);
-  border: 1px solid var(--vin-borde-sutil);
+  border: 1px solid var(--ms-border);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  color: var(--vin-texto-muted);
+  color: var(--ms-text-muted);
 }
 
 .video-player-icon {
@@ -442,14 +437,14 @@ onUnmounted(() => {
   text-align: center;
   padding: 1.5rem 1.15rem;
   border-radius: 0.85rem;
-  background: var(--vin-superficie-oscura);
-  border: 1px solid var(--vin-borde-sutil);
+  background: var(--ms-surface);
+  border: 1px solid var(--ms-border);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .servicio-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(var(--vin-acento-rgb), 0.35);
+  border-color: rgba(var(--ms-accent-rgb), 0.35);
 }
 
 .servicio-card__icon {
@@ -460,8 +455,8 @@ onUnmounted(() => {
   height: 3.25rem;
   margin-bottom: 0.85rem;
   border-radius: 50%;
-  background: rgba(var(--vin-acento-rgb), 0.18);
-  color: var(--vin-acento-sobre-negro);
+  background: rgba(var(--ms-accent-rgb), 0.18);
+  color: var(--ms-accent-on-dark);
 }
 
 .servicio-card__titulo {
@@ -475,7 +470,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--vin-texto-claro);
+  color: var(--ms-text);
   margin-bottom: 0.65rem;
 }
 
@@ -483,7 +478,7 @@ onUnmounted(() => {
   font-family: var(--font-body);
   font-size: 0.88rem;
   line-height: 1.55;
-  color: var(--vin-texto-muted);
+  color: var(--ms-text-muted);
   text-align: center;
   margin-bottom: 1.15rem;
   flex-grow: 1;

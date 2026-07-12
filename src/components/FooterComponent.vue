@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer mt-auto bg-vino-profundo border-top footer-vino">
+  <footer class="footer mt-auto bg-maestro-profundo border-top footer-maestro">
     <div class="container footer-inner">
       <a
         class="footer-cta"
@@ -33,9 +33,9 @@ const whatsappHref = getWhatsAppFooterUrl()
 </script>
 
 <style scoped>
-.footer-vino {
-  border-color: var(--vin-borde-sutil) !important;
-  box-shadow: 0 -1px 0 0 rgba(var(--vin-acento-rgb), 0.28);
+.footer-maestro {
+  border-color: var(--ms-border) !important;
+  box-shadow: 0 -1px 0 0 rgba(var(--ms-accent-rgb), 0.28);
 }
 
 .footer {
@@ -57,10 +57,10 @@ const whatsappHref = getWhatsAppFooterUrl()
   align-items: center;
   justify-content: center;
   padding: 0.7rem 2rem 0.75rem;
-  border: 1px solid rgba(var(--vin-acento-rgb), 0.55);
+  border: 1px solid rgba(var(--ms-accent-rgb), 0.55);
   border-radius: 999px;
   background: transparent;
-  color: var(--vin-acento-sobre-negro);
+  color: var(--ms-accent-on-dark);
   text-decoration: none;
   transition:
     color 0.25s ease,
@@ -81,13 +81,13 @@ const whatsappHref = getWhatsAppFooterUrl()
 .footer-cta:hover,
 .footer-cta:focus-visible {
   color: #fff;
-  background: rgba(var(--vin-acento-rgb), 0.22);
-  border-color: rgba(var(--vin-acento-rgb), 0.9);
-  box-shadow: 0 0 0 1px rgba(var(--vin-acento-rgb), 0.25);
+  background: rgba(var(--ms-accent-rgb), 0.22);
+  border-color: rgba(var(--ms-accent-rgb), 0.9);
+  box-shadow: 0 0 0 1px rgba(var(--ms-accent-rgb), 0.25);
 }
 
 .footer-cta:focus-visible {
-  outline: 2px solid rgba(var(--vin-acento-rgb), 0.55);
+  outline: 2px solid rgba(var(--ms-accent-rgb), 0.55);
   outline-offset: 3px;
 }
 
@@ -111,11 +111,11 @@ const whatsappHref = getWhatsAppFooterUrl()
 
 .footer-contact:hover,
 .footer-contact:focus-visible {
-  color: var(--vin-acento-sobre-negro);
+  color: var(--ms-accent-on-dark);
 }
 
 .footer-contact:focus-visible {
-  outline: 2px solid rgba(var(--vin-acento-rgb), 0.45);
+  outline: 2px solid rgba(var(--ms-accent-rgb), 0.45);
   outline-offset: 3px;
   border-radius: 0.2rem;
 }

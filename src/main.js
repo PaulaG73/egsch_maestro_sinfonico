@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/theme_vino_tinto.css';
+import './styles/theme_maestro.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 

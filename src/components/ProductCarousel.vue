@@ -1,7 +1,7 @@
 <template>
   <div
-    class="packs-carousel-outer d-flex align-items-center gap-2 gap-sm-3 px-2 px-sm-3"
-    :class="{ 'packs-carousel-outer--compact': compact }"
+    class="product-carousel-outer d-flex align-items-center gap-2 gap-sm-3 px-2 px-sm-3"
+    :class="{ 'product-carousel-outer--compact': compact }"
     @mouseenter="pauseCarousel"
     @mouseleave="resumeCarousel"
     @touchstart.passive="onCarouselTouchStart"
@@ -11,7 +11,7 @@
   >
     <button
       type="button"
-      class="packs-carousel-arrow packs-carousel-arrow--prev"
+      class="product-carousel-arrow product-carousel-arrow--prev"
       :aria-label="`Ver ${ariaLabel} anteriores`"
       @click="scrollCarousel(-1)"
     >
@@ -21,16 +21,16 @@
     </button>
     <div
       ref="carouselRef"
-      class="packs-carousel-wrap flex-grow-1 min-w-0"
+      class="product-carousel-wrap flex-grow-1 min-w-0"
       tabindex="0"
       role="region"
       :aria-label="`Carrusel de ${ariaLabel}, desplazamiento horizontal`"
     >
-      <div class="packs-carousel-inner">
+      <div class="product-carousel-inner">
         <div
           v-for="(proyecto, idx) in itemsLoop"
           :key="`${proyecto.id}-${idx}`"
-          class="packs-carousel-slide"
+          class="product-carousel-slide"
         >
           <CardComponent
             :product-id="proyecto.id"
@@ -47,7 +47,7 @@
     </div>
     <button
       type="button"
-      class="packs-carousel-arrow packs-carousel-arrow--next"
+      class="product-carousel-arrow product-carousel-arrow--next"
       :aria-label="`Ver ${ariaLabel} siguientes`"
       @click="scrollCarousel(1)"
     >
@@ -87,7 +87,7 @@ const carouselPaused = ref(false)
 const reduceMotion = ref(false)
 
 const SCROLL_STEP = 0.32
-const PACKS_CAROUSEL_IW = '--packs-carousel-iw'
+const PRODUCT_CAROUSEL_IW = '--product-carousel-iw'
 
 let rafId = 0
 let syncCarouselRaf = null
@@ -100,7 +100,7 @@ function syncCarouselInlineSize() {
   const el = carouselRef.value
   if (!el) return
   const w = el.clientWidth
-  if (w > 0) el.style.setProperty(PACKS_CAROUSEL_IW, `${w}px`)
+  if (w > 0) el.style.setProperty(PRODUCT_CAROUSEL_IW, `${w}px`)
 }
 
 function scheduleSyncCarouselInlineSize() {
@@ -152,8 +152,8 @@ function scrollCarousel(direction) {
   pauseCarousel()
   if (arrowResumeTimer) clearTimeout(arrowResumeTimer)
 
-  const inner = el.querySelector('.packs-carousel-inner')
-  const firstSlide = inner?.querySelector('.packs-carousel-slide')
+  const inner = el.querySelector('.product-carousel-inner')
+  const firstSlide = inner?.querySelector('.product-carousel-slide')
   let delta = el.clientWidth * direction
   if (inner && firstSlide) {
     const gapPx = parseFloat(getComputedStyle(inner).gap) || 0
@@ -212,12 +212,12 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.packs-carousel-outer {
+.product-carousel-outer {
   max-width: 100%;
   min-height: 0;
 }
 
-.packs-carousel-arrow {
+.product-carousel-arrow {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -227,9 +227,9 @@ onUnmounted(() => {
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: var(--vin-acento);
+  background-color: var(--ms-accent);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(var(--vin-acento-rgb), 0.35);
+  box-shadow: 0 2px 8px rgba(var(--ms-accent-rgb), 0.35);
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -237,80 +237,80 @@ onUnmounted(() => {
     box-shadow 0.2s ease;
 }
 
-.packs-carousel-arrow:hover {
-  background-color: var(--vin-acento-hover);
-  box-shadow: 0 3px 12px rgba(var(--vin-acento-rgb), 0.45);
+.product-carousel-arrow:hover {
+  background-color: var(--ms-accent-hover);
+  box-shadow: 0 3px 12px rgba(var(--ms-accent-rgb), 0.45);
 }
 
-.packs-carousel-arrow:active {
-  background-color: var(--vin-acento-active);
+.product-carousel-arrow:active {
+  background-color: var(--ms-accent-active);
   transform: scale(0.96);
 }
 
-.packs-carousel-arrow:focus-visible {
-  outline: 2px solid rgba(var(--vin-acento-rgb), 0.55);
+.product-carousel-arrow:focus-visible {
+  outline: 2px solid rgba(var(--ms-accent-rgb), 0.55);
   outline-offset: 3px;
 }
 
-.packs-carousel-wrap {
+.product-carousel-wrap {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: rgba(var(--vin-acento-rgb), 0.45) transparent;
+  scrollbar-color: rgba(var(--ms-accent-rgb), 0.45) transparent;
   padding-block: 0.25rem 0.75rem;
   outline: none;
 }
 
-.packs-carousel-wrap:focus-visible {
-  box-shadow: 0 0 0 2px rgba(var(--vin-acento-rgb), 0.35);
+.product-carousel-wrap:focus-visible {
+  box-shadow: 0 0 0 2px rgba(var(--ms-accent-rgb), 0.35);
   border-radius: 0.35rem;
 }
 
-.packs-carousel-wrap::-webkit-scrollbar {
+.product-carousel-wrap::-webkit-scrollbar {
   height: 6px;
 }
 
-.packs-carousel-wrap::-webkit-scrollbar-thumb {
-  background: rgba(var(--vin-acento-rgb), 0.4);
+.product-carousel-wrap::-webkit-scrollbar-thumb {
+  background: rgba(var(--ms-accent-rgb), 0.4);
   border-radius: 4px;
 }
 
-.packs-carousel-inner {
-  --packs-gap: clamp(0.75rem, 2vw, 1.15rem);
+.product-carousel-inner {
+  --product-gap: clamp(0.75rem, 2vw, 1.15rem);
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  gap: var(--packs-gap);
+  gap: var(--product-gap);
   width: max-content;
   min-height: 100%;
 }
 
-.packs-carousel-slide {
+.product-carousel-slide {
   flex: 0 0 auto;
   box-sizing: border-box;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   min-height: 0;
-  width: var(--packs-carousel-iw, 100%);
+  width: var(--product-carousel-iw, 100%);
   display: flex;
   flex-direction: column;
 }
 
 @media (min-width: 768px) {
-  .packs-carousel-slide {
-    width: calc((var(--packs-carousel-iw, 100%) - 2 * var(--packs-gap)) / 3);
+  .product-carousel-slide {
+    width: calc((var(--product-carousel-iw, 100%) - 2 * var(--product-gap)) / 3);
   }
 }
 
 @media (min-width: 1200px) {
-  .packs-carousel-outer--compact .packs-carousel-slide {
-    width: calc((var(--packs-carousel-iw, 100%) - 3 * var(--packs-gap)) / 4);
+  .product-carousel-outer--compact .product-carousel-slide {
+    width: calc((var(--product-carousel-iw, 100%) - 3 * var(--product-gap)) / 4);
   }
 }
 
-.packs-carousel-slide > * {
+.product-carousel-slide > * {
   flex: 1 1 auto;
   width: 100%;
   min-height: 0;

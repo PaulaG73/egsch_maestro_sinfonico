@@ -1,24 +1,24 @@
 <template>
   <div
-    class="card card-pack h-100 d-flex flex-column shadow-sm"
+    class="card product-card h-100 d-flex flex-column shadow-sm"
     :class="[
-      agotado ? 'card-pack--agotado border-secondary' : 'border-success',
-      { 'card-pack--compact': compact },
+      agotado ? 'product-card--agotado border-secondary' : 'border-success',
+      { 'product-card--compact': compact },
     ]"
   >
-    <div class="card-img-wrap card-img-wrap--pack flex-shrink-0">
-      <span v-if="agotado" class="card-pack-img-badge card-pack-agotado-badge">Agotado</span>
+    <div class="card-img-wrap card-img-wrap--product flex-shrink-0">
+      <span v-if="agotado" class="product-card-img-badge product-card-agotado-badge">Agotado</span>
       <img
         :src="image"
         class="card-img-top"
-        :class="{ 'card-pack-img--agotado': agotado }"
+        :class="{ 'product-card-img--agotado': agotado }"
         :style="imagePositionStyle"
         :alt="`${title}${subtitle ? `. ${subtitle}` : ''}${agotado ? ' (agotado)' : ''}`"
         loading="lazy"
       >
     </div>
 
-    <div class="card-body card-pack-body d-flex flex-column flex-grow-1">
+    <div class="card-body product-card-body d-flex flex-column flex-grow-1">
       <div class="card-heading flex-shrink-0 w-100 text-center">
         <h6 class="card-title fw-bold mb-1">{{ title }}</h6>
         <p v-if="subtitle" class="card-subtitle mb-0">{{ subtitle }}</p>
@@ -151,7 +151,7 @@ function onWaCardClick(e) {
 </script>
 
 <style scoped>
-.card-pack {
+.product-card {
   min-height: 0;
   border-radius: 1.125rem;
   overflow: visible;
@@ -161,7 +161,7 @@ function onWaCardClick(e) {
     0 2px 10px rgba(0, 0, 0, 0.28);
 }
 
-.card-pack-body {
+.product-card-body {
   flex: 1 1 auto;
   min-height: 0;
   padding: 0.55rem 0.7rem 0.75rem;
@@ -175,11 +175,11 @@ function onWaCardClick(e) {
   border-radius: 1.125rem 1.125rem 0 0;
 }
 
-.card-img-wrap--pack {
+.card-img-wrap--product {
   position: relative;
 }
 
-.card-pack-img-badge {
+.product-card-img-badge {
   position: absolute;
   top: 0.55rem;
   z-index: 2;
@@ -187,7 +187,7 @@ function onWaCardClick(e) {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
-.card-pack-agotado-badge {
+.product-card-agotado-badge {
   left: 50%;
   translate: -50% 0;
   padding: 0.38rem 0.85rem;
@@ -201,13 +201,13 @@ function onWaCardClick(e) {
   pointer-events: none;
 }
 
-.card-pack-img--agotado {
+.product-card-img--agotado {
   filter: grayscale(1) brightness(0.9);
 }
 
-.card-pack--agotado .card-title,
-.card-pack--agotado .card-subtitle,
-.card-pack--agotado .card-opcion {
+.product-card--agotado .card-title,
+.product-card--agotado .card-subtitle,
+.product-card--agotado .card-opcion {
   opacity: 0.88;
 }
 
@@ -244,7 +244,7 @@ function onWaCardClick(e) {
   line-height: 1.3;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(var(--vin-acento-rgb), 0.95);
+  color: rgba(var(--ms-accent-rgb), 0.95);
   font-weight: 600;
 }
 
@@ -261,7 +261,7 @@ function onWaCardClick(e) {
   align-items: stretch;
   gap: 0.45rem;
   padding: 0.55rem 0;
-  border-top: 1px solid rgba(var(--vin-acento-rgb), 0.35);
+  border-top: 1px solid rgba(var(--ms-accent-rgb), 0.35);
 }
 
 .card-opcion:first-child {
@@ -281,7 +281,7 @@ function onWaCardClick(e) {
   font-family: var(--font-body);
   font-size: clamp(0.82rem, 2vw, 0.95rem);
   font-weight: 800;
-  color: rgba(var(--vin-acento-rgb), 1);
+  color: rgba(var(--ms-accent-rgb), 1);
   margin-top: 0.25rem;
 }
 
@@ -294,7 +294,7 @@ function onWaCardClick(e) {
   font-size: 0.72rem;
 }
 
-.card-pack--compact {
+.product-card--compact {
   border-radius: 0.85rem;
   --bs-card-inner-border-radius: calc(0.85rem - 1px);
   box-shadow:
@@ -302,53 +302,53 @@ function onWaCardClick(e) {
     0 2px 8px rgba(0, 0, 0, 0.24);
 }
 
-.card-pack--compact .card-pack-body {
+.product-card--compact .product-card-body {
   padding: 0.4rem 0.5rem 0.5rem;
 }
 
-.card-pack--compact .card-img-wrap {
+.product-card--compact .card-img-wrap {
   aspect-ratio: 4 / 3;
   border-radius: 0.85rem 0.85rem 0 0;
 }
 
-.card-pack--compact .card-heading {
+.product-card--compact .card-heading {
   margin-bottom: 0.35rem;
 }
 
-.card-pack--compact .card-title {
+.product-card--compact .card-title {
   font-size: clamp(0.82rem, 2.2vw, 0.98rem);
   line-height: 1.2;
 }
 
-.card-pack--compact .card-subtitle {
+.product-card--compact .card-subtitle {
   font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   line-height: 1.25;
 }
 
-.card-pack--compact .card-opcion {
+.product-card--compact .card-opcion {
   gap: 0.3rem;
   padding: 0.35rem 0;
 }
 
-.card-pack--compact .card-opcion__nombre {
+.product-card--compact .card-opcion__nombre {
   font-size: clamp(0.68rem, 1.7vw, 0.78rem);
   line-height: 1.2;
 }
 
-.card-pack--compact .card-opcion__price {
+.product-card--compact .card-opcion__price {
   font-size: clamp(0.72rem, 1.8vw, 0.82rem);
   margin-top: 0.1rem;
 }
 
-.card-pack--compact .card-opcion__wa {
+.product-card--compact .card-opcion__wa {
   padding: 0.25rem 0.55rem 0.25rem 0.45rem;
 }
 
-.card-pack--compact .card-opcion__wa .wa-pill-label {
+.product-card--compact .card-opcion__wa .wa-pill-label {
   font-size: 0.64rem;
 }
 
-.card-pack--compact .card-opcion__wa .wa-pill-icon {
+.product-card--compact .card-opcion__wa .wa-pill-icon {
   width: 0.9rem;
   height: 0.9rem;
 }

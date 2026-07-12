@@ -11,8 +11,8 @@
 
     body {
       margin: 0;
-      background-color: var(--vin-negro-marca);
-      color: var(--vin-texto-claro);
+      background-color: var(--ms-ink);
+      color: var(--ms-text);
     }
 
     #app {
@@ -21,8 +21,8 @@
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
       min-height: 100vh;
-      color: var(--vin-texto-claro);
-      background-color: var(--vin-negro-marca);
+      color: var(--ms-text);
+      background-color: var(--ms-ink);
     }
     </style>
     

@@ -1,7 +1,8 @@
 {
-  "name": "catalogo_finde",
+  "name": "egsch_maestro_sinfonico",
   "version": "0.1.0",
   "private": true,
+  "description": "Sitio web de Eduardo Gajardo Schmidlin — Maestro Sinfónico y Director de Orquesta",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -23,8 +24,7 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "sharp": "^0.34.5"
+    "eslint-plugin-vue": "^8.0.3"
   },
   "eslintConfig": {
     "root": true,

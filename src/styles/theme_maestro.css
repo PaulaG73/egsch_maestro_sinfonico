@@ -1,0 +1,144 @@
+/* Tema maestro: azul medianoche */
+:root,
+[data-bs-theme="light"] {
+  --ms-pale: #e6ebf4;
+  --ms-section-bg: #eef1f7;
+  --ms-accent: #3a5f9a;
+  --ms-accent-rgb: 58, 95, 154;
+  --ms-accent-hover: #2f4f82;
+  --ms-accent-active: #26406b;
+
+  --ms-deep: #0f1c33;
+  --ms-deep-rgb: 15, 28, 51;
+
+  --ms-ink: #0a0a0a;
+  --ms-surface: #10141c;
+  --ms-surface-alt: #141a24;
+  --ms-slate: #141c2a;
+  --ms-text: rgba(255, 255, 255, 0.96);
+  --ms-text-muted: rgba(255, 255, 255, 0.8);
+  --ms-accent-on-dark: #a8c4e8;
+  --ms-border: rgba(255, 255, 255, 0.1);
+
+  --font-display: 'Cinzel', 'Times New Roman', Times, serif;
+  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --wa-green: #25d366;
+  --wa-green-hover: #20bd5a;
+  --wa-green-active: #1da851;
+  --wa-green-rgb: 37, 211, 102;
+
+  --bs-success: var(--ms-accent);
+  --bs-success-rgb: var(--ms-accent-rgb);
+  --bs-success-text-emphasis: #1a2f52;
+  --bs-success-bg-subtle: var(--ms-pale);
+  --bs-success-border-subtle: #b8c6dc;
+}
+
+.bg-maestro-profundo {
+  background-color: var(--ms-deep) !important;
+}
+
+/* WhatsApp: outline; verde solo en el ícono */
+.btn-whatsapp {
+  --bs-btn-color: var(--ms-text);
+  --bs-btn-bg: rgba(16, 20, 28, 0.72);
+  --bs-btn-border-color: rgba(var(--ms-accent-rgb), 0.55);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(var(--ms-accent-rgb), 0.28);
+  --bs-btn-hover-border-color: var(--ms-accent-on-dark);
+  --bs-btn-focus-shadow-rgb: var(--ms-accent-rgb);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgba(var(--ms-accent-rgb), 0.4);
+  --bs-btn-active-border-color: var(--ms-accent-on-dark);
+  --bs-btn-active-shadow: none;
+  --bs-btn-disabled-color: rgba(255, 255, 255, 0.55);
+  --bs-btn-disabled-bg: rgba(16, 20, 28, 0.45);
+  --bs-btn-disabled-border-color: rgba(255, 255, 255, 0.2);
+}
+
+.wa-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.48rem 1rem 0.48rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.wa-pill-btn:hover,
+.wa-pill-btn:focus-visible {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.wa-pill-icon {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--wa-green);
+  filter: none;
+}
+
+.wa-pill-btn:hover .wa-pill-icon,
+.wa-pill-btn:focus-visible .wa-pill-icon {
+  color: #3be07a;
+}
+
+.wa-pill-label {
+  flex-shrink: 0;
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+  color: inherit;
+}
+
+.btn-success {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--ms-accent);
+  --bs-btn-border-color: var(--ms-accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--ms-accent-hover);
+  --bs-btn-hover-border-color: var(--ms-accent-hover);
+  --bs-btn-focus-shadow-rgb: var(--ms-accent-rgb);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--ms-accent-active);
+  --bs-btn-active-border-color: var(--ms-accent-active);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--ms-accent);
+  --bs-btn-disabled-border-color: var(--ms-accent);
+}
+
+.btn-outline-success {
+  --bs-btn-color: var(--ms-accent-on-dark);
+  --bs-btn-border-color: var(--ms-accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--ms-accent);
+  --bs-btn-hover-border-color: var(--ms-accent);
+  --bs-btn-focus-shadow-rgb: var(--ms-accent-rgb);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--ms-accent-hover);
+  --bs-btn-active-border-color: var(--ms-accent-hover);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--ms-accent);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--ms-accent);
+  --bs-gradient: none;
+}
