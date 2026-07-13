@@ -1,4 +1,4 @@
-/** Traducciones navbar + hero (ES / EN / FR) — terminología musical de alto nivel */
+/** Traducciones navbar, hero, footer y servicios (ES / EN / FR) */
 
 export const messages = {
   es: {
@@ -13,10 +13,22 @@ export const messages = {
       contacto: 'Contacto',
     },
     hero: {
-      role: 'Maestro Sinfónico y Director de Orquesta',
+      role: 'Director de Orquesta, Compositor y Orquestador',
       disciplines: 'Composiciones - Orquestaciones - Arreglos - Transcripciones',
       quote: '«Llevando la música de la partitura al escenario».',
-      photoAlt: 'Eduardo Gajardo Schmidlin, Maestro Sinfónico y Director de Orquesta',
+      photoAlt: 'Eduardo Gajardo Schmidlin, Director de Orquesta, Compositor y Orquestador',
+    },
+    footer: {
+      contactUs: 'Contáctanos',
+      mailSubject: 'Contacto — Eduardo Gajardo Schmidlin',
+      rights: 'Derechos reservados © {year} Paula Gajardo Schmidlin',
+      scrollUp: 'Volver a la barra de navegación',
+    },
+    services: {
+      composiciones: 'Composiciones',
+      orquestaciones: 'Orquestaciones',
+      arreglosCorales: 'Arreglos Corales',
+      transcripcionPartituras: 'Transcripción de partituras',
     },
   },
   en: {
@@ -31,10 +43,22 @@ export const messages = {
       contacto: 'Contact',
     },
     hero: {
-      role: 'Symphonic Mastermind & Conductor',
+      role: 'Conductor, Composer & Orchestrator',
       disciplines: 'Compositions — Orchestrations — Arrangements — Transcriptions',
       quote: '«Bringing the music from the score to the stage».',
-      photoAlt: 'Eduardo Gajardo Schmidlin, Symphonic Mastermind and Conductor',
+      photoAlt: 'Eduardo Gajardo Schmidlin, Conductor, Composer and Orchestrator',
+    },
+    footer: {
+      contactUs: 'Contact us',
+      mailSubject: 'Enquiry — Eduardo Gajardo Schmidlin',
+      rights: 'All rights reserved © {year} Paula Gajardo Schmidlin',
+      scrollUp: 'Back to the navigation bar',
+    },
+    services: {
+      composiciones: 'Compositions',
+      orquestaciones: 'Orchestrations',
+      arreglosCorales: 'Choral Arrangements',
+      transcripcionPartituras: 'Score Transcription',
     },
   },
   fr: {
@@ -49,15 +73,27 @@ export const messages = {
       contacto: 'Contact',
     },
     hero: {
-      role: 'Grand Orchestrateur & Chef d’orchestre',
+      role: 'Chef d’orchestre, Compositeur et Orchestrateur',
       disciplines: 'Composition — Orchestration — Arrangement — Transcription',
       quote: '« Porter la musique de la partition à la scène ».',
-      photoAlt: 'Eduardo Gajardo Schmidlin, Grand Orchestrateur et Chef d’orchestre',
+      photoAlt: 'Eduardo Gajardo Schmidlin, Chef d’orchestre, Compositeur et Orchestrateur',
+    },
+    footer: {
+      contactUs: 'Contactez-nous',
+      mailSubject: 'Contact — Eduardo Gajardo Schmidlin',
+      rights: 'Tous droits réservés © {year} Paula Gajardo Schmidlin',
+      scrollUp: 'Retour à la barre de navigation',
+    },
+    services: {
+      composiciones: 'Composition',
+      orquestaciones: 'Orchestration',
+      arreglosCorales: 'Arrangements choraux',
+      transcripcionPartituras: 'Transcription de partitions',
     },
   },
 }
 
-export function translate(locale, path) {
+export function translate(locale, path, vars) {
   const lang = messages[locale] ? locale : 'es'
   const parts = String(path).split('.')
   let cur = messages[lang]
@@ -65,5 +101,9 @@ export function translate(locale, path) {
     if (cur == null || typeof cur !== 'object') return path
     cur = cur[part]
   }
-  return typeof cur === 'string' ? cur : path
+  if (typeof cur !== 'string') return path
+  if (!vars) return cur
+  return cur.replace(/\{(\w+)\}/g, (_, key) =>
+    vars[key] != null ? String(vars[key]) : `{${key}}`,
+  )
 }

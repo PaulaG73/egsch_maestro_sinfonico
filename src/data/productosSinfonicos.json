@@ -1,76 +1,161 @@
 [
   {
     "id": "1",
-    "title": "Queen Sinfónico",
+    "title": "Queen",
+    "subtitle": "Sinfónico",
     "image": "/img/Queen2.jpg",
+    "temas": [
+      {
+        "id": "queen-completo",
+        "nombre": "Concierto completo",
+        "esCompleto": true
+      },
+      { "id": "queen-tema-01", "nombre": "Innuendo" },
+      { "id": "queen-tema-02", "nombre": "Ouverture" },
+      { "id": "queen-tema-03", "nombre": "Flash" },
+      { "id": "queen-tema-04", "nombre": "Love of My Life" },
+      { "id": "queen-tema-05", "nombre": "Somebody to Love" },
+      { "id": "queen-tema-06", "nombre": "Save Me" },
+      { "id": "queen-tema-07", "nombre": "Killer Queen" },
+      { "id": "queen-tema-08", "nombre": "Who Wants to Live Forever" },
+      { "id": "queen-tema-09", "nombre": "Bohemian Rhapsody" },
+      { "id": "queen-tema-10", "nombre": "Don't Stop Me Now" },
+      { "id": "queen-tema-11", "nombre": "Play the Game" },
+      { "id": "queen-tema-12", "nombre": "I Want to Break Free" },
+      { "id": "queen-tema-13", "nombre": "Bicycle Race" },
+      { "id": "queen-tema-14", "nombre": "Under Pressure" },
+      { "id": "queen-tema-15", "nombre": "We Are the Champions" },
+      { "id": "queen-tema-16", "nombre": "We Will Rock You" }
+    ],
     "opciones": [
       {
         "id": "queen-full-score-orquesta",
         "nombre": "Full Score Orquesta",
         "descripcion": "Partitura completa para director y orquesta sinfónica.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       },
       {
         "id": "queen-score-coro",
         "nombre": "Score Coro",
         "descripcion": "Partitura coral para ensayo y presentación.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       },
       {
         "id": "queen-partes-individuales",
         "nombre": "Partes individuales de orquesta",
         "descripcion": "Partes por instrumento, listas para ensayo y concierto.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       }
     ]
   },
   {
     "id": "2",
-    "title": "Whitney Houston Sinfónico",
+    "title": "Whitney Houston",
+    "subtitle": "Sinfónico",
     "image": "/img/Withney2.jpg",
+    "temas": [
+      {
+        "id": "whitney-completo",
+        "nombre": "Concierto completo",
+        "esCompleto": true
+      },
+      { "id": "whitney-tema-01", "nombre": "I Wanna Dance with Somebody" },
+      { "id": "whitney-tema-02", "nombre": "How Will I Know" },
+      { "id": "whitney-tema-03", "nombre": "So Emotional" },
+      { "id": "whitney-tema-04", "nombre": "Million Dollar Bill" },
+      { "id": "whitney-tema-05", "nombre": "Queen of the Night" },
+      { "id": "whitney-tema-06", "nombre": "I Will Always Love You" },
+      { "id": "whitney-tema-07", "nombre": "I Have Nothing" },
+      { "id": "whitney-tema-08", "nombre": "Run to You" },
+      { "id": "whitney-tema-09", "nombre": "One Moment in Time" },
+      { "id": "whitney-tema-10", "nombre": "Didn't We Almost Have It All" },
+      { "id": "whitney-tema-11", "nombre": "Bring Me a Higher Love" },
+      { "id": "whitney-tema-12", "nombre": "Step by Step" },
+      { "id": "whitney-tema-13", "nombre": "Jesus Loves Me" },
+      { "id": "whitney-tema-14", "nombre": "Tema 14" },
+      { "id": "whitney-tema-15", "nombre": "Tema 15" },
+      { "id": "whitney-tema-16", "nombre": "Tema 16" },
+      { "id": "whitney-tema-17", "nombre": "Tema 17" }
+    ],
     "opciones": [
       {
         "id": "whitney-full-score-orquesta",
         "nombre": "Full Score Orquesta",
         "descripcion": "Partitura completa para director y orquesta sinfónica.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       },
       {
         "id": "whitney-score-coro",
         "nombre": "Score Coro",
         "descripcion": "Partitura coral para ensayo y presentación.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       },
       {
         "id": "whitney-partes-individuales",
         "nombre": "Partes individuales de orquesta",
         "descripcion": "Partes por instrumento, listas para ensayo y concierto.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       }
     ]
   },
   {
     "id": "3",
-    "title": "Nino Bravo Sinfónico",
+    "title": "Nino Bravo Inmortal",
+    "subtitle": "Sinfónico",
     "image": "/img/Nino1.jpeg",
+    "temas": [
+      {
+        "id": "nino-completo",
+        "nombre": "Concierto completo",
+        "esCompleto": true
+      },
+      { "id": "nino-tema-01", "nombre": "Te quiero, te quiero" },
+      { "id": "nino-tema-02", "nombre": "Como todos" },
+      { "id": "nino-tema-03", "nombre": "Un beso y una flor" },
+      { "id": "nino-tema-04", "nombre": "Es el viento" },
+      { "id": "nino-tema-05", "nombre": "Noelia" },
+      { "id": "nino-tema-06", "nombre": "América" },
+      { "id": "nino-tema-07", "nombre": "Cartas amarillas" },
+      { "id": "nino-tema-08", "nombre": "El tren se va" },
+      { "id": "nino-tema-09", "nombre": "La puerta del amor" },
+      { "id": "nino-tema-10", "nombre": "Obertura" }
+    ],
     "opciones": [
       {
         "id": "nino-full-score-orquesta",
         "nombre": "Full Score Orquesta",
         "descripcion": "Partitura completa para director y orquesta sinfónica.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       },
       {
         "id": "nino-score-coro",
         "nombre": "Score Coro",
         "descripcion": "Partitura coral para ensayo y presentación.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       },
       {
         "id": "nino-partes-individuales",
         "nombre": "Partes individuales de orquesta",
         "descripcion": "Partes por instrumento, listas para ensayo y concierto.",
-        "price": "$XX.XXX"
+        "price": "$XX.XXX",
+        "priceCompleto": "$XX.XXX",
+        "priceTema": "$XX.XXX"
       }
     ]
   }

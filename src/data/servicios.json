@@ -1,26 +1,30 @@
 [
   {
     "id": 1,
-    "titulo": "Composiciones",
+    "titleKey": "composiciones",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
-    "icon": "composicion"
+    "icon": "composicion",
+    "image": "/img/compositor3.jpg"
   },
   {
     "id": 2,
-    "titulo": "Orquestaciones",
+    "titleKey": "orquestaciones",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
-    "icon": "arreglos"
+    "icon": "arreglos",
+    "image": "/img/orquesta.jpg"
   },
   {
     "id": 3,
-    "titulo": "Arreglos Corales",
+    "titleKey": "arreglosCorales",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
-    "icon": "direccion"
+    "icon": "direccion",
+    "image": "/img/coro.jpg"
   },
   {
     "id": 4,
-    "titulo": "Transcripción de partituras",
+    "titleKey": "transcripcionPartituras",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
-    "icon": "consultoria"
+    "icon": "consultoria",
+    "image": "/img/partitura.jpg"
   }
 ]

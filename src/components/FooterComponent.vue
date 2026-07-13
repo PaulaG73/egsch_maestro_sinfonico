@@ -7,7 +7,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span class="footer-cta__label">Contáctanos</span>
+        <span class="footer-cta__label">{{ t('footer.contactUs') }}</span>
       </a>
 
       <div class="footer-contacts">
@@ -16,23 +16,31 @@
         <a class="footer-contact" :href="mailtoHref">{{ emailDisplay }}</a>
       </div>
 
-      <p class="mb-0 footer-copy">Derechos reservados &copy; 2026 Paula Gajardo Schmidlin</p>
+      <p class="mb-0 footer-copy">{{ t('footer.rights', { year: 2026 }) }}</p>
 
-      <SectionScrollUp />
+      <SectionScrollUp :aria-label="t('footer.scrollUp')" />
     </div>
   </footer>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import SectionScrollUp from './SectionScrollUp.vue'
 import { getWhatsAppFooterUrl } from '@/config/whatsapp'
+import { useI18n } from '@/i18n/useI18n'
+
+const { t } = useI18n()
 
 /** Placeholders de contacto — reemplazar cuando estén definitivos */
 const phoneDisplay = '+56 x xxxx xxxx'
 const emailDisplay = 'contacto@xxxxx.cl'
 const telHref = 'tel:+56000000000'
-const mailtoHref = `mailto:${emailDisplay}?subject=${encodeURIComponent('Contacto — Eduardo Gajardo Schmidlin')}`
 const whatsappHref = getWhatsAppFooterUrl()
+
+const mailtoHref = computed(() => {
+  const subject = encodeURIComponent(t.value('footer.mailSubject'))
+  return `mailto:${emailDisplay}?subject=${subject}`
+})
 </script>
 
 <style scoped>

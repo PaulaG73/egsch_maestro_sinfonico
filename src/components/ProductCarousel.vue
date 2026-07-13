@@ -38,6 +38,7 @@
             :subtitle="proyecto.subtitle || ''"
             :image="proyecto.image"
             :opciones="proyecto.opciones"
+            :temas="proyecto.temas || []"
             :agotado="Boolean(proyecto.agotado)"
             :compact="compact"
             :image-position="proyecto.imagePosition || ''"

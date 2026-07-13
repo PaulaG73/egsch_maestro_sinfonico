@@ -5,8 +5,8 @@ import { translate } from './messages'
 const HTML_LANG = { es: 'es', en: 'en', fr: 'fr' }
 
 /**
- * Locale reactivo + helper `t('nav.contacto')` para navbar y hero.
- * `t` es un computed que depende de `locale`, para que HomeView se actualice al cambiar idioma.
+ * Locale reactivo + helper `t('nav.contacto')` / `t('footer.rights', { year: 2026 })`.
+ * `t` es un computed que depende de `locale`, para que las vistas se actualicen al cambiar idioma.
  */
 export function useI18n() {
   const store = useStore()
@@ -14,7 +14,7 @@ export function useI18n() {
 
   const t = computed(() => {
     const loc = locale.value
-    return (path) => translate(loc, path)
+    return (path, vars) => translate(loc, path, vars)
   })
 
   function setLocale(code) {

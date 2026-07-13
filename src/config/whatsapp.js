@@ -5,6 +5,20 @@ export const WHATSAPP_NUMBER_DIGITS = '56996450950'
 const PUBLIC_SITE_FROM_ENV = process.env.VUE_APP_PUBLIC_SITE_URL || ''
 const WHATSAPP_FALLBACK_SITE_ORIGIN = 'https://egschmaestrosinfonico.netlify.app'
 
+/**
+ * Página estática con meta OG → imagen de la tarjeta del producto.
+ * WhatsApp no previsualiza bien JPG sueltos; necesita HTML con og:image.
+ */
+const PRODUCT_SHARE_BY_IMAGE = {
+  '/img/Queen2.jpg': '/share/queen.html',
+  '/img/Withney2.jpg': '/share/whitney.html',
+  '/img/Nino1.jpeg': '/share/nino.html',
+  '/img/Mi_pobre_angelito.jpg': '/share/mi-pobre-angelito.html',
+  '/img/Superman.jpg': '/share/superman.html',
+  '/img/Frozen.jpg': '/share/frozen.html',
+  '/img/Rey_leon.jpg': '/share/rey-leon.html',
+}
+
 function digitsOnly() {
   return WHATSAPP_NUMBER_DIGITS.replace(/\D/g, '')
 }
@@ -17,7 +31,7 @@ function normalizeHttpsRoot(url) {
   return u.replace(/^http:\/\//i, 'https://')
 }
 
-/** Origen HTTPS público para adjuntar imagen del producto en el mensaje. */
+/** Origen HTTPS público para adjuntar vista previa del producto en el mensaje. */
 function getShareBaseOrigin() {
   let origin = normalizeHttpsRoot(PUBLIC_SITE_FROM_ENV)
   if (!origin) origin = normalizeHttpsRoot(WHATSAPP_FALLBACK_SITE_ORIGIN)
@@ -32,15 +46,36 @@ function getShareBaseOrigin() {
   return ''
 }
 
-function resolveProductImageUrl(assetPath) {
+function normalizeAssetPath(assetPath) {
   if (!assetPath || typeof assetPath !== 'string') return ''
   const trimmed = assetPath.trim()
   if (!trimmed) return ''
-  if (/^https?:\/\//i.test(trimmed)) return normalizeHttpsRoot(trimmed)
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      const u = new URL(trimmed)
+      return u.pathname || ''
+    } catch {
+      return ''
+    }
+  }
+  return trimmed.startsWith('/') ? trimmed : `/${trimmed}`
+}
 
-  const path = trimmed.startsWith('/') ? trimmed : `/${trimmed}`
+/**
+ * URL HTTPS pública para la vista previa en WhatsApp:
+ * preferir página /share/*.html con og:image de la tarjeta;
+ * si no hay página, caer al JPG directo.
+ */
+function resolveProductPreviewUrl(assetPath) {
   const base = getShareBaseOrigin()
   if (!base) return ''
+
+  const path = normalizeAssetPath(assetPath)
+  if (!path) return ''
+
+  const sharePath = PRODUCT_SHARE_BY_IMAGE[path]
+  if (sharePath) return `${base}${sharePath}`
+
   return `${base}${path}`
 }
 
@@ -62,6 +97,7 @@ export function getWhatsAppFooterUrl() {
 
 /**
  * WhatsApp para una opción de producto (partitura / formato).
+ * Incluye siempre la URL de vista previa de la tarjeta del producto.
  * @param {{
  *   productId?: string,
  *   title?: string,
@@ -79,7 +115,7 @@ export function getWhatsAppProductOptionUrl(payload) {
   const opcion = payload?.opcion && typeof payload.opcion === 'object' ? payload.opcion : {}
   const opcionNombre = typeof opcion.nombre === 'string' ? opcion.nombre.trim() : ''
   const price = typeof opcion.price === 'string' ? opcion.price.trim() : ''
-  const previewUrl = resolveProductImageUrl(payload?.image || '')
+  const previewUrl = resolveProductPreviewUrl(payload?.image || '')
 
   const parts = ['Hola, quiero solicitar:']
   if (title) parts.push(title)
@@ -95,6 +131,54 @@ export function getWhatsAppProductOptionUrl(payload) {
   const priceTxt = priceForWhatsAppMessage(price)
   if (priceTxt) {
     parts.push(`Precio (CLP): ${priceTxt}`)
+  }
+
+  const text = parts.join('\n').trimEnd()
+  return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(text)}`
+}
+
+/**
+ * WhatsApp para selección de formato + uno o varios temas (p. ej. Queen).
+ * Incluye siempre la URL de vista previa de la tarjeta del producto (misma imagen, 1 o N temas).
+ * @param {{
+ *   productId?: string,
+ *   title?: string,
+ *   subtitle?: string,
+ *   image?: string,
+ *   formato?: { id?: string, nombre?: string },
+ *   temas?: Array<{ id?: string, nombre?: string, esCompleto?: boolean, price?: string }>
+ * }} payload
+ */
+export function getWhatsAppProductSelectionUrl(payload) {
+  const digits = digitsOnly()
+  if (!digits) return '#'
+
+  const title = typeof payload?.title === 'string' ? payload.title.trim() : ''
+  const subtitle = typeof payload?.subtitle === 'string' ? payload.subtitle.trim() : ''
+  const formato = payload?.formato && typeof payload.formato === 'object' ? payload.formato : {}
+  const formatoNombre = typeof formato.nombre === 'string' ? formato.nombre.trim() : ''
+  const temas = Array.isArray(payload?.temas) ? payload.temas : []
+  const previewUrl = resolveProductPreviewUrl(payload?.image || '')
+
+  const parts = ['Hola, quiero solicitar:']
+  if (title) parts.push(title)
+  if (subtitle) parts.push(subtitle)
+  if (formatoNombre) parts.push(`Formato: ${formatoNombre}`)
+  parts.push('')
+
+  if (temas.length) {
+    parts.push('Selección:')
+    for (const tema of temas) {
+      const nombre = typeof tema?.nombre === 'string' ? tema.nombre.trim() : ''
+      if (!nombre) continue
+      const priceTxt = priceForWhatsAppMessage(tema.price || '')
+      parts.push(priceTxt ? `• ${nombre} — ${priceTxt} CLP` : `• ${nombre}`)
+    }
+    parts.push('')
+  }
+
+  if (previewUrl && /^https:\/\//i.test(previewUrl)) {
+    parts.push(previewUrl)
   }
 
   const text = parts.join('\n').trimEnd()

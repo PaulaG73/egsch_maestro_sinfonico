@@ -52,7 +52,7 @@
   <!-- Trayectoria -->
   <section id="trayectoria" class="home-section home-section--ink py-4 py-md-5">
     <div class="container trayectoria">
-      <h2 class="section-title mb-3 mb-md-4">Trayectoria</h2>
+      <h2 class="section-title mb-3 mb-md-4">{{ t('nav.trayectoria') }}</h2>
       <p class="trayectoria__lead mb-0">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
@@ -64,7 +64,7 @@
   <!-- Productos Sinfónicos -->
   <section id="productos-sinfonicos" class="home-section home-section--slate pt-4 pt-md-5 pb-2 pb-md-3">
     <div class="container text-center">
-      <h2 class="section-title mb-4">Productos Sinfónicos</h2>
+      <h2 class="section-title mb-4">{{ t('nav.productosSinfonicos') }}</h2>
     </div>
     <ProductCarousel
       :items="productosSinfonicos"
@@ -76,7 +76,7 @@
   <!-- Música de Películas -->
   <section id="musica-peliculas" class="home-section home-section--ink pt-4 pt-md-5 pb-2 pb-md-3">
     <div class="container text-center">
-      <h2 class="section-title mb-4">Música de Películas</h2>
+      <h2 class="section-title mb-4">{{ t('nav.musicaPeliculas') }}</h2>
     </div>
     <ProductCarousel
       :items="musicaPeliculas"
@@ -89,7 +89,7 @@
   <!-- Servicios -->
   <section id="servicios" class="home-section home-section--slate py-4 py-md-5">
     <div class="container">
-      <h2 class="section-title mb-4 mb-md-5">Servicios</h2>
+      <h2 class="section-title mb-4 mb-md-5">{{ t('nav.servicios') }}</h2>
       <div class="row g-3 g-md-4 justify-content-center">
         <div
           v-for="servicio in servicios"
@@ -97,7 +97,7 @@
           class="col-12 col-sm-6 col-lg-3"
         >
           <article class="servicio-card h-100 d-flex flex-column">
-            <div class="servicio-card__icon" aria-hidden="true">
+            <div v-if="!servicio.image" class="servicio-card__icon" aria-hidden="true">
               <svg v-if="servicio.icon === 'composicion'" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M9 13c0 .552-.448 1-1 1s-1-.448-1-1V5c0-.552.448-1 1-1s1 .448 1 1z"/>
                 <path d="M6 12.036V13c0 .552-.448 1-1 1s-1-.448-1-1v-.964c-.725-.35-1.22-.998-1.22-1.752 0-.754.495-1.402 1.22-1.752V7c0-.552.448-1 1-1s1 .448 1 1v1.536c.725.35 1.22.998 1.22 1.752 0 .754-.495 1.402-1.22 1.752"/>
@@ -115,11 +115,19 @@
                 <path d="M5 10a3 3 0 1 1 6 0v3a3 3 0 1 1-6 0z"/>
               </svg>
             </div>
-            <h3 class="servicio-card__titulo">{{ servicio.titulo }}</h3>
+            <h3 class="servicio-card__titulo">{{ t(`services.${servicio.titleKey}`) }}</h3>
             <p class="servicio-card__descripcion">{{ servicio.descripcion }}</p>
+            <div v-if="servicio.image" class="servicio-card__media">
+              <img
+                :src="servicio.image"
+                :alt="t(`services.${servicio.titleKey}`)"
+                class="servicio-card__img"
+                loading="lazy"
+              >
+            </div>
             <a
               class="btn btn-outline-success servicio-card__cta mt-auto"
-              :href="cotizaMailto(servicio.titulo)"
+              :href="cotizaMailto(t(`services.${servicio.titleKey}`))"
             >
               Cotiza aquí
             </a>
@@ -133,7 +141,7 @@
   <!-- Testimonios (placeholder) -->
   <section id="testimonios" class="home-section home-section--ink py-4 py-md-5">
     <div class="container">
-      <h2 class="section-title mb-3">Testimonios</h2>
+      <h2 class="section-title mb-3">{{ t('nav.testimonios') }}</h2>
       <p class="section-placeholder mb-0">Contenido próximamente.</p>
       <SectionScrollUp />
     </div>
@@ -512,6 +520,25 @@ onUnmounted(() => {
   text-align: center;
   margin-bottom: 1.15rem;
   flex-grow: 1;
+}
+
+.servicio-card__media {
+  width: 78%;
+  max-width: 11.5rem;
+  margin: 0 auto 1.15rem;
+  padding: 0.35rem;
+  border: 1px solid rgba(var(--ms-accent-rgb), 0.45);
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.servicio-card__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.2rem;
 }
 
 .servicio-card__cta {
