@@ -3,7 +3,7 @@
 export const WHATSAPP_NUMBER_DIGITS = '56996450950'
 
 const PUBLIC_SITE_FROM_ENV = process.env.VUE_APP_PUBLIC_SITE_URL || ''
-const WHATSAPP_FALLBACK_SITE_ORIGIN = 'https://egschmaestrosinfonico.netlify.app'
+const WHATSAPP_FALLBACK_SITE_ORIGIN = 'https://egschdirectorcompositor.netlify.app'
 
 /**
  * Página estática con meta OG → imagen de la tarjeta del producto.

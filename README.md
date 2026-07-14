@@ -1,8 +1,8 @@
-# Eduardo Gajardo Schmidlin — Maestro Sinfónico
+# Eduardo Gajardo Schmidlin. Director de Orquesta, Compositor y Orquestador
 
-Sitio web (Vue 3) para el maestro sinfónico y director de orquesta: presentación, catálogo de partituras, servicios y contacto.
+Sitio web (Vue 3) de Eduardo Gajardo Schmidlin: presentación, catálogo de partituras, servicios y contacto.
 
-- **Demo:** [egschmaestrosinfonico.netlify.app](https://egschmaestrosinfonico.netlify.app/)
+- **Demo:** [egschdirectorcompositor.netlify.app](https://egschdirectorcompositor.netlify.app/)
 - **Stack:** Vue 3, Vue Router, Vuex, Bootstrap 5
 
 ## Desarrollo
@@ -23,7 +23,7 @@ npm run build
 En `.env.development` y `.env.production` (sin barra final):
 
 ```
-VUE_APP_PUBLIC_SITE_URL=https://egschmaestrosinfonico.netlify.app
+VUE_APP_PUBLIC_SITE_URL=https://egschdirectorcompositor.netlify.app
 ```
 
 Sirve para enlaces de imagen en mensajes de WhatsApp (los productos) y coherencia con el dominio público.
@@ -38,11 +38,9 @@ src/
   config/         # WhatsApp
   views/HomeView.vue
 public/
-  img/            # fotos del maestro y portadas de productos
+  img/            # fotos de productos y hero
+  share/          # páginas OG por producto (WhatsApp)
   compartir.html  # meta Open Graph para compartir el sitio
 ```
 
-## Tipografía y tema
-
-- **Cinzel** (títulos) y **Montserrat** (cuerpo)
-- Tema en `src/styles/theme_maestro.css` (paleta azul medianoche, tokens `--ms-*`)
+Paquete npm / repo: `egsch_director_compositor`.

@@ -6,7 +6,7 @@ module.exports = defineConfig({
   pages: {
     index: {
       entry: 'src/main.js',
-      title: 'Eduardo Gajardo Schmidlin · Maestro Sinfónico',
+      title: 'Eduardo Gajardo Schmidlin. Director de Orquesta, Compositor y Orquestador',
     },
   },
   devServer: {

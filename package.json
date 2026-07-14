@@ -1,8 +1,8 @@
 {
-  "name": "egsch_maestro_sinfonico",
+  "name": "egsch_director_compositor",
   "version": "0.1.0",
   "private": true,
-  "description": "Sitio web de Eduardo Gajardo Schmidlin — Maestro Sinfónico y Director de Orquesta",
+  "description": "Sitio web de Eduardo Gajardo Schmidlin — Director de Orquesta, Compositor y Orquestador",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
